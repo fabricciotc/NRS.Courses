@@ -1,0 +1,10 @@
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\bin\Debug\netcoreapp3.1\Dominio.deps.json
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\bin\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\bin\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfoInputs.cache
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfo.cs
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netcoreapp3.1\Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.AssemblyReference.cache

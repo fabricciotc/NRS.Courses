@@ -1,0 +1,9 @@
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\bin\Debug\netstandard2.1\Dominio.deps.json
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\bin\Debug\netstandard2.1\Dominio.dll
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\bin\Debug\netstandard2.1\Dominio.pdb
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netstandard2.1\Dominio.csprojAssemblyReference.cache
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netstandard2.1\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netstandard2.1\Dominio.AssemblyInfoInputs.cache
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netstandard2.1\Dominio.AssemblyInfo.cs
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netstandard2.1\Dominio.dll
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Dominio\obj\Debug\netstandard2.1\Dominio.pdb

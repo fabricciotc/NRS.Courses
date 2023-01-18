@@ -1,0 +1,16 @@
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\bin\Debug\netcoreapp3.1\Persistencia.deps.json
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\bin\Debug\netcoreapp3.1\Persistencia.runtimeconfig.json
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\bin\Debug\netcoreapp3.1\Persistencia.runtimeconfig.dev.json
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\bin\Debug\netcoreapp3.1\Persistencia.dll
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\bin\Debug\netcoreapp3.1\Persistencia.pdb
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\bin\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\bin\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\obj\Debug\netcoreapp3.1\Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\obj\Debug\netcoreapp3.1\Persistencia.AssemblyInfoInputs.cache
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\obj\Debug\netcoreapp3.1\Persistencia.AssemblyInfo.cs
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\obj\Debug\netcoreapp3.1\Persistencia.csproj.CopyComplete
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\obj\Debug\netcoreapp3.1\Persistencia.dll
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\obj\Debug\netcoreapp3.1\Persistencia.pdb
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\obj\Debug\netcoreapp3.1\Persistencia.genruntimeconfig.cache
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\obj\Debug\netcoreapp3.1\Persistencia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Persistencia\obj\Debug\netcoreapp3.1\Persistencia.csproj.AssemblyReference.cache
