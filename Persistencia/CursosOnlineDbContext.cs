@@ -20,5 +20,6 @@ namespace Persistencia
         public DbSet<Instructor> Instructor{set;get;}
         public DbSet<Precio> Precio {set;get;}
         public DbSet<Usuario> Usuario {set;get;}
+        public DbSet<Documento> Documento {set;get;}
     }
 }

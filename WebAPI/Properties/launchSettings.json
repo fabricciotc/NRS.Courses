@@ -17,7 +17,7 @@
             "ASPNETCORE_ENVIRONMENT": "Development"
         }
     },
-    "WebAPI": {
+    "Presentacion": {
         "commandName": "Project",
         "launchBrowser": true,
         "launchUrl": "swagger",

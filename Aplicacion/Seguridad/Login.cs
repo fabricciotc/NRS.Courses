@@ -38,7 +38,7 @@ namespace Aplicacion.Seguridad
             {
                 var usuario = await _userManager.FindByEmailAsync(request.Email);
                 if(usuario==null){
-                    throw new ManejadorExcepcion(System.Net.HttpStatusCode.Unauthorized); 
+                    throw new ManejadorExcepcion(System.Net.HttpStatusCode.Unauthorized, new { mensaje = "Crendenciales Incorrectas" }); 
                 }
                 var roles = await _userManager.GetRolesAsync(usuario);
                 var result = await _signInManager.CheckPasswordSignInAsync(usuario,request.Password,false);
@@ -47,7 +47,7 @@ namespace Aplicacion.Seguridad
                     NombreCompleto = usuario.NombreCompleto, Username= usuario.UserName,
                     Token = _jwtGenerador.CrearToken(usuario,roles.ToList()), Email = usuario.Email,
                     Imagen = null 
-                }: throw new ManejadorExcepcion(System.Net.HttpStatusCode.Unauthorized); 
+                }: throw new ManejadorExcepcion(System.Net.HttpStatusCode.Unauthorized, new { mensaje = "Crendenciales Incorrectas" }); 
             }
         }
     }

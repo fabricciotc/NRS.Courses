@@ -1,0 +1,8 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "",
+"LaunchCommand": "",
+"WorkingDirectory": "C:\\Users\\fabri\\source\\repos\\Web Cursos - React\\WebAPI",
+"MaxTimeoutInSeconds": "120"
+}
+}

@@ -15,3 +15,20 @@ C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Seguridad\obj\Debug\netcor
 C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.pdb
 C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\fabri\curso-udemy\netcore-udemy\ProyectoCore\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.csproj.AssemblyReference.cache
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\bin\Debug\netcoreapp3.1\Seguridad.deps.json
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\bin\Debug\netcoreapp3.1\Seguridad.dll
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\bin\Debug\netcoreapp3.1\Seguridad.pdb
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\bin\Debug\netcoreapp3.1\Aplicacion.dll
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\bin\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\bin\Debug\netcoreapp3.1\Persistencia.dll
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\bin\Debug\netcoreapp3.1\Aplicacion.pdb
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\bin\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\bin\Debug\netcoreapp3.1\Persistencia.pdb
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.csproj.AssemblyReference.cache
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.AssemblyInfoInputs.cache
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.AssemblyInfo.cs
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.csproj.CoreCompileInputs.cache
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.csproj.CopyComplete
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.dll
+C:\Users\fabri\source\repos\Web Cursos - React\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.pdb

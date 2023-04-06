@@ -3,16 +3,16 @@ import {
   Button,
   Drawer,
   IconButton,
-  List,
-  ListItem,
   makeStyles,
   Toolbar,
   Typography,
-  ListItemText
 } from "@material-ui/core";
 import React, { useState } from "react";
 import { useStateValue } from "../../../context/storage";
 import FotoUsuarioTheme from "../../../logo.svg";
+import { MenuIzquierda } from "./menuIzquierda";
+import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import { MenuDerecha } from "./menuDerecha";
 
 const useStyles = makeStyles((theme) => ({
   seccionDesktop: {
@@ -34,44 +34,77 @@ const useStyles = makeStyles((theme) => ({
     width: 40,
     height: 40,
   },
-  list:{
-      width:250
+  list: {
+    width: 250,
   },
-  listItemText:{
-      fontSize:"14px",
-      fontWeight:600,
-      paddingLeft:"15",
-      color:"#212121"
-  }
+  listItemText: {
+    fontSize: "14px",
+    fontWeight: 600,
+    paddingLeft: "15",
+    color: "#212121",
+  },
 }));
 
-const Barsesion = () => {
+const Barsesion = (props) => {
   const classes = useStyles();
   const [{ sesionUsuario }, dispatch] = useStateValue();
-  const [abrirMenuIzquierdo,setAbrirmenuIzquierda] = useState(false);
-  const cerrarMenuIzquierdo=()=>{
-      setAbrirmenuIzquierda(false);
-  }
-  const abrirMenuIzquierdoAction=()=>{
-      setAbrirmenuIzquierda(true);
-  }
+  const [abrirMenuIzquierdo, setAbrirmenuIzquierda] = useState(false);
+  const [abrirMenuDerecha, setAbrirmenuDerecha] = useState(false);
+
+  const cerrarMenuIzquierdo = () => {
+    setAbrirmenuIzquierda(false);
+  };
+  const abrirMenuIzquierdoAction = () => {
+    setAbrirmenuIzquierda(true);
+  };
+  const abrirMenuDerechaAction = () => {
+    setAbrirmenuDerecha(true);
+  };
+  const cerrarMenuDerecha = () => {
+    setAbrirmenuDerecha(false);
+  };
+  const salirSesionApp = () => {
+    dispatch({
+      type: "CERRAR_SESION",
+    });
+    localStorage.removeItem("tokenSeguridad");
+    props.history.push("/auth/login");
+  };
 
   return (
     <React.Fragment>
-      <Drawer 
-      open={abrirMenuIzquierdo} 
-      onClose={cerrarMenuIzquierdo}
-      anchor="left"
+      <Drawer
+        open={abrirMenuIzquierdo}
+        onClose={cerrarMenuIzquierdo}
+        anchor="left"
       >
-          <div className={classes.list} onKeyDown={cerrarMenuIzquierdo} onClick={cerrarMenuIzquierdo}>
-            <List>
-                <ListItem button>
-                    <i className="material-icons">account_box</i>
-                    <ListItemText classes={{primary: classes.listItemText}} primary="Perfil"/>
-                </ListItem>
-            </List>
-          </div>
+        <div
+          className={classes.list}
+          onKeyDown={cerrarMenuIzquierdo}
+          onClick={cerrarMenuIzquierdo}
+        >
+          <MenuIzquierda classes={classes}></MenuIzquierda>
+        </div>
       </Drawer>
+
+      <Drawer
+        open={abrirMenuDerecha}
+        onClose={cerrarMenuDerecha}
+        anchor="right"
+      >
+        <div
+          role="button"
+          onClick={cerrarMenuDerecha}
+          onKeyDown={cerrarMenuDerecha}
+        >
+          <MenuDerecha
+            classes={classes}
+            salirSesion={salirSesionApp}
+            usuario={sesionUsuario ? sesionUsuario.usuario : null}
+          />
+        </div>
+      </Drawer>
+
       <Toolbar>
         <IconButton color="inherit" onClick={abrirMenuIzquierdoAction}>
           <i className="material-icons">menu</i>
@@ -81,13 +114,17 @@ const Barsesion = () => {
         <div className={classes.seccionDesktop}>
           <Button color="inherit">Salir</Button>
           <Button color="inherit">
-            {sesionUsuario ? sesionUsuario.usuario.nombreCompleto : ""}
+            {sesionUsuario
+              ? sesionUsuario.usuario
+                ? sesionUsuario.usuario.nombreCompleto
+                : ""
+              : null}
           </Button>
           <Avatar src={FotoUsuarioTheme}></Avatar>
         </div>
 
         <div className={classes.seccionMobile}>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={abrirMenuDerechaAction}>
             <i className="material-icons">more_vert</i>
           </IconButton>
         </div>
@@ -96,4 +133,4 @@ const Barsesion = () => {
   );
 };
 
-export default Barsesion;
+export default withRouter(Barsesion);

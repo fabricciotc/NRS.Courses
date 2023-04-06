@@ -25,6 +25,7 @@ using Persistencia.DapperConexion;
 using Persistencia.DapperConexion.Instructor;
 using Microsoft.OpenApi.Models;
 using Persistencia.DapperConexion.Paginacion;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 
 namespace WebAPI
 {
@@ -86,9 +87,13 @@ namespace WebAPI
             services.AddScoped<IInstructor, InstructorRepositorio>();
             services.AddScoped<IPaginacion, PaginacionRepositorio>();
 
+            services.AddMvc(option => option.EnableEndpointRouting = false);
 
-
-
+            //services.AddSpaStaticFiles(configuration =>
+            //{
+            //    configuration.RootPath = "Frontend";
+            //});
+            services.AddEndpointsApiExplorer();
             //DOCUMENTACION
             services.AddSwaggerGen(d=>{
                 d.SwaggerDoc("v1",new OpenApiInfo{
@@ -110,13 +115,21 @@ namespace WebAPI
             }
 
             //DE MOMENTO LO COMENTO PARA NO USAR HTTPS EN DESARROLLO
-            //app.UseHttpsRedirection();
-
+            app.UseHttpsRedirection();
             app.UseAuthentication();
-
+            app.UseStaticFiles();
+            app.UseDefaultFiles();
+            //app.UseSpaStaticFiles();
             app.UseRouting();
-
             app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+            app.UseSpa(spa =>
+            {
+                spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+            });
 
             app.UseEndpoints(endpoints =>
             {
