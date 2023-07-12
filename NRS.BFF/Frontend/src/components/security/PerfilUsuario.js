@@ -37,14 +37,13 @@ const PerfilUsuario = (props) => {
   const [{ sesionUsuario }, dispatch] = useStateValue();
 
   useEffect(() => {
-    if (sesionUsuario != null) {
-      setUsuario(sesionUsuario.usuario);
-      setUsuario((anterior) => ({
-        ...anterior,
-        fotoUrl: sesionUsuario.usuario.imagenPerfil,
-      }));
-    }
-  }, [sesionUsuario]);
+    console.log(sesionUsuario);
+    setUsuario(sesionUsuario.usuario);
+    setUsuario((anterior) => ({
+      ...anterior,
+      fotoUrl: sesionUsuario.usuario.imagenPerfil,
+    }));
+  }, []);
 
   const guardarUsuario = (e) => {
     e.preventDefault();

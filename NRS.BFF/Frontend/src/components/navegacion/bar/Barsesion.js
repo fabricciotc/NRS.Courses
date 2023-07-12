@@ -134,7 +134,9 @@ const Barsesion = (props) => {
                 <Button color="inherit">
                   {sesionUsuario.usuario.nombreCompleto}
                 </Button>
-                <Avatar src={FotoUsuarioTheme}></Avatar>
+                <Avatar
+                  src={sesionUsuario.usuario.imagenPerfil || FotoUsuarioTheme}
+                ></Avatar>
               </>
             ) : (
               <>

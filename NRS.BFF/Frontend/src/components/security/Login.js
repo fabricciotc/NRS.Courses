@@ -31,17 +31,11 @@ const Login = (props) => {
     e.preventDefault();
     loginUsuario(usuario).then((res) => {
       if (res.status === 200) {
-        dispatch({
-          type: "OPEN_SNACKBAR",
-          openMensaje: {
-            open: true,
-            mensaje: "Inicio de sesion exitoso",
-          },
-        });
+        console.log(res.data);
         dispatch({
           type: "INICIAR_SESION",
           openMensaje: {
-            usuario: {
+            sesion: {
               nombreCompleto: res.data.nombreCompleto,
               email: res.data.email,
               userName: res.data.username,
