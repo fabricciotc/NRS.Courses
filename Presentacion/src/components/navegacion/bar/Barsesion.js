@@ -70,6 +70,12 @@ const Barsesion = (props) => {
     localStorage.removeItem("tokenSeguridad");
     props.history.push("/auth/login");
   };
+  const loginApp = () => {
+    props.history.push("/auth/login");
+  };
+  const registroApp = () => {
+    props.history.push("/auth/registrar");
+  };
 
   return (
     <React.Fragment>
@@ -101,26 +107,55 @@ const Barsesion = (props) => {
             classes={classes}
             salirSesion={salirSesionApp}
             usuario={sesionUsuario ? sesionUsuario.usuario : null}
+            loginApp={loginApp}
+            registroApp={registroApp}
           />
         </div>
       </Drawer>
 
       <Toolbar>
-        <IconButton color="inherit" onClick={abrirMenuIzquierdoAction}>
-          <i className="material-icons">menu</i>
-        </IconButton>
+        {sesionUsuario ? (
+          sesionUsuario.usuario ? (
+            <IconButton color="inherit" onClick={abrirMenuIzquierdoAction}>
+              <i className="material-icons">menu</i>
+            </IconButton>
+          ) : null
+        ) : null}
         <Typography variant="h6">Cursos Online</Typography>
         <div className={classes.grow}></div>
         <div className={classes.seccionDesktop}>
-          <Button color="inherit">Salir</Button>
-          <Button color="inherit">
-            {sesionUsuario
-              ? sesionUsuario.usuario
-                ? sesionUsuario.usuario.nombreCompleto
-                : ""
-              : null}
-          </Button>
-          <Avatar src={FotoUsuarioTheme}></Avatar>
+          {sesionUsuario ? (
+            sesionUsuario.usuario ? (
+              <>
+                <Button color="inherit" onClick={salirSesionApp}>
+                  Salir
+                </Button>
+
+                <Button color="inherit">
+                  {sesionUsuario.usuario.nombreCompleto}
+                </Button>
+                <Avatar src={FotoUsuarioTheme}></Avatar>
+              </>
+            ) : (
+              <>
+                <Button color="inherit" onClick={loginApp}>
+                  Login
+                </Button>
+                <Button color="inherit" onClick={registroApp}>
+                  Registro
+                </Button>
+              </>
+            )
+          ) : (
+            <>
+              <Button color="inherit" onClick={loginApp}>
+                Login
+              </Button>
+              <Button color="inherit" onClick={registroApp}>
+                Registro
+              </Button>
+            </>
+          )}
         </div>
 
         <div className={classes.seccionMobile}>

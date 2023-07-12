@@ -35,7 +35,7 @@ const App = () => {
         open: false,
       },
     });
-  return (
+  return iniciaApp === false ? null : (
     <React.Fragment>
       <Snackbar
         anchorOrigin={{

@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Button,
   Container,
   Grid,
@@ -6,12 +7,13 @@ import {
   Typography,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import {
-  actulizarUsuario,
-  obtenerUsuarioActual,
-} from "../../actions/UsuarioAction";
+import { actulizarUsuario } from "../../actions/UsuarioAction";
 import style from "../tools/Style";
 import { useStateValue } from "../../context/storage";
+import reactFoto from "../../logo.svg";
+import { v4 as uuidv4 } from "uuid";
+import ImageUploader from "react-images-upload";
+import { obtenerDataImagen } from "../../actions/ImagenAction";
 
 const PerfilUsuario = () => {
   const [usuario, setUsuario] = useState({
@@ -20,6 +22,8 @@ const PerfilUsuario = () => {
     password: "",
     confirmarPassword: "",
     userName: "",
+    imagenPerfil: null,
+    fotoUrl: "",
   });
 
   const ingresarValoresMemoria = (e) => {
@@ -33,9 +37,11 @@ const PerfilUsuario = () => {
   const [{ sesionUsuario }, dispatch] = useStateValue();
 
   useEffect(() => {
-    obtenerUsuarioActual(dispatch).then((res) => {
-      setUsuario(res.data);
-    });
+    setUsuario(sesionUsuario.usuario);
+    setUsuario((anterior) => ({
+      ...anterior,
+      fotoUrl: sesionUsuario.usuario.imagenPerfil,
+    }));
   }, []);
 
   const guardarUsuario = (e) => {
@@ -74,83 +80,114 @@ const PerfilUsuario = () => {
     });
   };
 
+  const subitFoto = (imagenes) => {
+    const foto = imagenes[0];
+    const fotoUrl = URL.createObjectURL(foto);
+
+    obtenerDataImagen(foto).then((respuesta) => {
+      setUsuario((anterior) => ({
+        ...anterior,
+        imagenPerfil: respuesta,
+        fotoUrl: fotoUrl,
+      }));
+    });
+  };
+
+  const fotoKey = uuidv4();
+
   return (
     <Container maxWidth="md" component="main" justify="center">
       <div style={style.paper}>
+        <Avatar
+          style={style.avatar}
+          src={usuario.fotoUrl || reactFoto}
+        ></Avatar>
         <Typography component="h1" variant="h5">
           Perfil de Usuario
         </Typography>
+
+        <form style={style.form}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={12}>
+              <TextField
+                fullWidth
+                name="nombreCompleto"
+                value={usuario.nombreCompleto}
+                onChange={ingresarValoresMemoria}
+                label="Ingrese su Nombre y Apellidos"
+                variant="outlined"
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                name="email"
+                value={usuario.email}
+                onChange={ingresarValoresMemoria}
+                label="Ingrese su Email"
+                variant="outlined"
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                name="username"
+                value={usuario.username}
+                onChange={ingresarValoresMemoria}
+                label="Ingrese su Username"
+                variant="outlined"
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                name="password"
+                value={usuario.password}
+                label="Ingrese su Password"
+                onChange={ingresarValoresMemoria}
+                variant="outlined"
+                type="password"
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                name="confirmarPassword"
+                value={usuario.confirmarPassword}
+                label="Confirme su Password"
+                variant="outlined"
+                onChange={ingresarValoresMemoria}
+                type="password"
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} md={12}>
+              <ImageUploader
+                withIcon={false}
+                key={fotoKey}
+                singleImage={true}
+                buttonText="Seleccione una Imagen de Perfil"
+                onChange={subitFoto}
+                imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
+                maxFileSize={5242880}
+              ></ImageUploader>
+            </Grid>
+          </Grid>
+          <Grid container justify="center">
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              onChange={ingresarValoresMemoria}
+              size="large"
+              style={style.submit}
+              onClick={guardarUsuario}
+              type="submit"
+            >
+              Guardar Datos
+            </Button>
+          </Grid>
+        </form>
       </div>
-      <form style={style.form}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={12}>
-            <TextField
-              fullWidth
-              name="nombreCompleto"
-              value={usuario.nombreCompleto}
-              onChange={ingresarValoresMemoria}
-              label="Ingrese su Nombre y Apellidos"
-              variant="outlined"
-            ></TextField>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              name="email"
-              value={usuario.email}
-              onChange={ingresarValoresMemoria}
-              label="Ingrese su Email"
-              variant="outlined"
-            ></TextField>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              name="userName"
-              value={usuario.username}
-              onChange={ingresarValoresMemoria}
-              label="Ingrese su Username"
-              variant="outlined"
-            ></TextField>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              name="password"
-              value={usuario.password}
-              label="Ingrese su Password"
-              onChange={ingresarValoresMemoria}
-              variant="outlined"
-              type="password"
-            ></TextField>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              name="confirmarPassword"
-              value={usuario.confirmarPassword}
-              label="Confirme su Password"
-              variant="outlined"
-              onChange={ingresarValoresMemoria}
-              type="password"
-            ></TextField>
-          </Grid>
-        </Grid>
-        <Grid container justify="center">
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            onChange={ingresarValoresMemoria}
-            size="large"
-            style={style.submit}
-            onClick={guardarUsuario}
-            type="submit"
-          >
-            Guardar Datos
-          </Button>
-        </Grid>
-      </form>
     </Container>
   );
 };

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -8,6 +9,8 @@ using Dominio;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Persistencia;
 
 namespace Aplicacion.Seguridad
 {
@@ -28,26 +31,45 @@ namespace Aplicacion.Seguridad
             private readonly UserManager<Usuario> _userManager;
             private readonly SignInManager<Usuario> _signInManager;
             private readonly IJwtGenerador _jwtGenerador;
-            public Manejador(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, IJwtGenerador jwtGenerador){
+            private readonly CursosOnlineDbContext _context;
+
+            public Manejador(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, IJwtGenerador jwtGenerador, CursosOnlineDbContext context){
                 this._signInManager=signInManager;
                 this._userManager=userManager;
                 this._jwtGenerador = jwtGenerador;
+                this._context=context;
 
             }
             public async Task<UsuarioData> Handle(Ejecuta request, CancellationToken cancellationToken)
             {
                 var usuario = await _userManager.FindByEmailAsync(request.Email);
                 if(usuario==null){
-                    throw new ManejadorExcepcion(System.Net.HttpStatusCode.Unauthorized, new { mensaje = "Crendenciales Incorrectas" }); 
+                    throw new ManejadorExcepcion(HttpStatusCode.Unauthorized, new { mensaje = "Crendenciales Incorrectas" }); 
                 }
                 var roles = await _userManager.GetRolesAsync(usuario);
                 var result = await _signInManager.CheckPasswordSignInAsync(usuario,request.Password,false);
 
-                return result==SignInResult.Success?new UsuarioData { 
-                    NombreCompleto = usuario.NombreCompleto, Username= usuario.UserName,
-                    Token = _jwtGenerador.CrearToken(usuario,roles.ToList()), Email = usuario.Email,
-                    Imagen = null 
-                }: throw new ManejadorExcepcion(System.Net.HttpStatusCode.Unauthorized, new { mensaje = "Crendenciales Incorrectas" }); 
+                var imagenPerfil = await _context.Documento.FirstOrDefaultAsync(x => x.ObjetoReferencia == new Guid(usuario.Id));
+                var usuarioResponse = new UsuarioData
+                {
+                    NombreCompleto = usuario.NombreCompleto,
+                    Username = usuario.UserName,
+                    Token = _jwtGenerador.CrearToken(usuario, roles.ToList()),
+                    Email = usuario.Email,
+                    Imagen = null
+                };
+                
+                if (imagenPerfil != null) {
+                    var imagenCliente = new ImagenGeneral
+                    {
+                        Data = Convert.ToBase64String(imagenPerfil.Contenido),
+                        Nombre = imagenPerfil.Nombre,
+                        Extension = imagenPerfil.Extension
+                    };
+                    usuarioResponse.ImagenPerfil = imagenCliente;
+                }
+
+                return result == SignInResult.Success ? usuarioResponse : throw new ManejadorExcepcion(System.Net.HttpStatusCode.Unauthorized, new { mensaje = "Crendenciales Incorrectas" }); 
             }
         }
     }
