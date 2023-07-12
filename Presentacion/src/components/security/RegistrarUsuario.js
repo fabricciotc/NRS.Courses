@@ -35,16 +35,24 @@ const RegistrarUsuario = (props) => {
 
   const enviarRegistro = (e) => {
     e.preventDefault();
-    console.log("Enviando...", usuario);
     registrarUsuario(usuario).then((response) => {
       if (response.status === 200) {
         window.localStorage.setItem("tokenSeguridad", response.data.token);
+      } else if (response.status === 401) {
+        dispatch({
+          type: "OPEN_SNACKBAR",
+          openMensaje: {
+            open: true,
+            mensaje: "(LGE401) " + response.data.mensaje,
+            severity: "error",
+          },
+        });
       } else {
         dispatch({
           type: "OPEN_SNACKBAR",
           openMensaje: {
             open: true,
-            mensaje: "(LGE301) " + response.data.mensaje,
+            mensaje: `(LGE${response.status}): ${response.statusText}`,
             severity: "error",
           },
         });

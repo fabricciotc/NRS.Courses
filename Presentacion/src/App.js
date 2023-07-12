@@ -26,7 +26,7 @@ const App = () => {
           setInicialApp(true);
         });
     }
-  }, [iniciaApp]);
+  }, [iniciaApp, dispatch]);
 
   const handleClose = () =>
     dispatch({
@@ -74,7 +74,11 @@ const App = () => {
                 component={RegistrarUsuario}
               />
               <Route exact path="/auth/perfil" component={PerfilUsuario} />
-              <Route exact path="/" component={PerfilUsuario} />
+              <Route
+                exact
+                path="/"
+                component={sesionUsuario != null ? PerfilUsuario : Login}
+              />
             </Switch>
           </Grid>
         </MuiThemeProvider>

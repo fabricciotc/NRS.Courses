@@ -25,7 +25,6 @@ using Persistencia.DapperConexion;
 using Persistencia.DapperConexion.Instructor;
 using Microsoft.OpenApi.Models;
 using Persistencia.DapperConexion.Paginacion;
-using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 
 namespace WebAPI
 {
@@ -41,49 +40,54 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(o=> o.AddPolicy("corsApp",builder=>{
+            services.AddCors(o => o.AddPolicy("corsApp", builder =>
+            {
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             }));
-            services.AddDbContext<CursosOnlineDbContext>(opt =>{
+            services.AddDbContext<CursosOnlineDbContext>(opt =>
+            {
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddOptions();
             services.Configure<conexionConfiguracion>(Configuration.GetSection("ConnectionStrings"));
             services.AddMediatR(typeof(Consulta.Manejador).Assembly);
-            
-            services.AddControllers(opt => {
+
+            services.AddControllers(opt =>
+            {
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                 opt.Filters.Add(new AuthorizeFilter(policy));
-            }).AddFluentValidation( cfg => cfg.RegisterValidatorsFromAssemblyContaining<Nuevo>());
-           
+            }).AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Nuevo>());
+
             var builder = services.AddIdentityCore<Usuario>();
-           
-            var identityBuilder = new IdentityBuilder(builder.UserType,builder.Services);
+
+            var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
 
             identityBuilder.AddRoles<IdentityRole>();
-            identityBuilder.AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<Usuario,IdentityRole>>();
+            identityBuilder.AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<Usuario, IdentityRole>>();
 
 
             identityBuilder.AddEntityFrameworkStores<CursosOnlineDbContext>();
             identityBuilder.AddSignInManager<SignInManager<Usuario>>();
-           
-            services.TryAddSingleton<ISystemClock,SystemClock>();
+
+            services.TryAddSingleton<ISystemClock, SystemClock>();
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("SecretKey").Value));
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => {
-                opt.TokenValidationParameters = new TokenValidationParameters{
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+            {
+                opt.TokenValidationParameters = new TokenValidationParameters
+                {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = key,
                     ValidateAudience = false,
                     ValidateIssuer = false
                 };
             });
-            
-            services.AddScoped<IUsuarioSesion,UsuarioSesion>();
-            services.AddScoped<IJwtGenerador,JwtGenerador>();
+
+            services.AddScoped<IUsuarioSesion, UsuarioSesion>();
+            services.AddScoped<IJwtGenerador, JwtGenerador>();
             services.AddAutoMapper(typeof(Consulta.Manejador));
 
-            services.AddTransient<IFactoryConexion,FactoryConexion>();
-            
+            services.AddTransient<IFactoryConexion, FactoryConexion>();
+
             services.AddScoped<IInstructor, InstructorRepositorio>();
             services.AddScoped<IPaginacion, PaginacionRepositorio>();
 
@@ -95,14 +99,16 @@ namespace WebAPI
             //});
             services.AddEndpointsApiExplorer();
             //DOCUMENTACION
-            services.AddSwaggerGen(d=>{
-                d.SwaggerDoc("v1",new OpenApiInfo{
-                    Title="Servicios para mantenimiento de Cursos",
-                    Version="v1"
+            services.AddSwaggerGen(d =>
+            {
+                d.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Servicios para mantenimiento de Cursos",
+                    Version = "v1"
                 });
-                d.CustomSchemaIds(c=>c.FullName);
+                d.CustomSchemaIds(c => c.FullName);
             });
-      }
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -136,8 +142,9 @@ namespace WebAPI
                 endpoints.MapControllers();
             });
             app.UseSwagger();
-            app.UseSwaggerUI(c=>{
-                c.SwaggerEndpoint("/swagger/v1/swagger.json","Cursos Online v1");
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cursos Online v1");
             });
         }
     }

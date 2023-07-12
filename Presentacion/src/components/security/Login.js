@@ -57,7 +57,16 @@ const Login = (props) => {
           type: "OPEN_SNACKBAR",
           openMensaje: {
             open: true,
-            mensaje: "(LGE301) " + res.data.mensaje,
+            mensaje: "(LGE401) " + res.data.mensaje,
+            severity: "error",
+          },
+        });
+      } else {
+        dispatch({
+          type: "OPEN_SNACKBAR",
+          openMensaje: {
+            open: true,
+            mensaje: `(LGE${res.status}): ${res.statusText}`,
             severity: "error",
           },
         });

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kkmjZ0XZT1KfppSxZCdPF38Gtm6pz2MKn9Wjq6YfnvTPL2QisY3St/fOgmljsdScKKQ2KdjCPUzPOAHNS7Bbqw==",
+  "dgSpecHash": "dL787xj+X4YIPbWeqEOjRcElgS3apmANbe1Xl42fHgSbFKixLD/yrUxqSktE0gdT3ZCBjRpJyimXyZ0sST1knw==",
   "success": true,
   "projectFilePath": "C:\\Users\\fabri\\source\\repos\\Web Cursos - React\\Seguridad\\Seguridad.csproj",
   "expectedPackageFiles": [
@@ -61,10 +61,7 @@
     "C:\\Users\\fabri\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
-    "C:\\Users\\fabri\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
-    "C:\\Users\\fabri\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.13\\microsoft.aspnetcore.app.ref.6.0.13.nupkg.sha512",
-    "C:\\Users\\fabri\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.13\\microsoft.windowsdesktop.app.ref.6.0.13.nupkg.sha512",
-    "C:\\Users\\fabri\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.13\\microsoft.netcore.app.ref.6.0.13.nupkg.sha512"
+    "C:\\Users\\fabri\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

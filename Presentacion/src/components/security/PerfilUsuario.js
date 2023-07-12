@@ -15,7 +15,7 @@ import { v4 as uuidv4 } from "uuid";
 import ImageUploader from "react-images-upload";
 import { obtenerDataImagen } from "../../actions/ImagenAction";
 
-const PerfilUsuario = () => {
+const PerfilUsuario = (props) => {
   const [usuario, setUsuario] = useState({
     nombreCompleto: "",
     email: "",
@@ -37,12 +37,14 @@ const PerfilUsuario = () => {
   const [{ sesionUsuario }, dispatch] = useStateValue();
 
   useEffect(() => {
-    setUsuario(sesionUsuario.usuario);
-    setUsuario((anterior) => ({
-      ...anterior,
-      fotoUrl: sesionUsuario.usuario.imagenPerfil,
-    }));
-  }, []);
+    if (sesionUsuario != null) {
+      setUsuario(sesionUsuario.usuario);
+      setUsuario((anterior) => ({
+        ...anterior,
+        fotoUrl: sesionUsuario.usuario.imagenPerfil,
+      }));
+    }
+  }, [sesionUsuario]);
 
   const guardarUsuario = (e) => {
     e.preventDefault();
