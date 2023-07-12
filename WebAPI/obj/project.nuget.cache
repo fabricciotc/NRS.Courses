@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "brfNRvd8hO9Jm7Gblww2wYjL695Q1NRLbTlM0O/sPTrUESshK+FQLCg0rsjZUqrGBiSMnvkswyjNfk5o0c0HqQ==",
+  "dgSpecHash": "IFAT+b2vlXkNTAmMgmBctfzp76oXK6HKkgJCs8yDGQZ96BMpaP/lqWGw7GB3SdvRNTkJpg12yFBA9BHkpeHu3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fabri\\source\\repos\\Web Cursos - React\\WebApi\\WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\fabri\\source\\repos\\Web Cursos - React\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fabri\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",

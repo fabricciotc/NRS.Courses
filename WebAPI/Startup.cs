@@ -25,6 +25,7 @@ using Persistencia.DapperConexion;
 using Persistencia.DapperConexion.Instructor;
 using Microsoft.OpenApi.Models;
 using Persistencia.DapperConexion.Paginacion;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 
 namespace WebAPI
 {
@@ -134,7 +135,10 @@ namespace WebAPI
             });
             app.UseSpa(spa =>
             {
-                spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+                if (env.IsDevelopment())
+                {
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+                }
             });
 
             app.UseEndpoints(endpoints =>
