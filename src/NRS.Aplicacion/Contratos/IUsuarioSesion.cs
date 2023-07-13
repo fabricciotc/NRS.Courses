@@ -1,4 +1,4 @@
-namespace Aplicacion.Contratos
+namespace NRS.Aplicacion.Contratos
 {
     public interface IUsuarioSesion
     {

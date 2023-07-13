@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aplicacion.Seguridad
+namespace NRS.Aplicacion.Seguridad
 {
     public class ImagenGeneral
     {

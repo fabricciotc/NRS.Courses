@@ -2,7 +2,7 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 
-namespace Persistencia.DapperConexion
+namespace NRS.Persistencia.DapperConexion
 {
     public class FactoryConexion : IFactoryConexion
     {

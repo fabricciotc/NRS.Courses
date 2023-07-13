@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Aplicacion.Comentarios;
-using Dominio;
+using NRS.Aplicacion.Comentarios;
+using NRS.Dominio;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers
+namespace NRS.BFF.Controllers
 {
     public class ConmentarioController: MiControllerBase
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Aplicacion.Cursos
+namespace NRS.Aplicacion.Cursos
 {
     public class PrecioDTO
     {

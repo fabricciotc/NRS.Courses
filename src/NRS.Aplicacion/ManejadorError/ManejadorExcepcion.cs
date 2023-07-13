@@ -1,7 +1,7 @@
 using System.Net;
 using System;
 
-namespace Aplicacion.ManejadorError
+namespace NRS.Aplicacion.ManejadorError
 {
     public class ManejadorExcepcion : Exception
     {

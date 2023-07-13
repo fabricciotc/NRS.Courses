@@ -1,5 +1,5 @@
 using System;
-namespace Dominio
+namespace NRS.Dominio
 {
     public class Curso_Instructor
     {

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-namespace Persistencia.DapperConexion.Paginacion
+namespace NRS.Persistencia.DapperConexion.Paginacion
 {
     public class PaginacionModel
     {

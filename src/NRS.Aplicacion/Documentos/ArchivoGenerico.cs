@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aplicacion.Documentos
+namespace NRS.Aplicacion.Documentos
 {
     public class ArchivoGenerico
     {

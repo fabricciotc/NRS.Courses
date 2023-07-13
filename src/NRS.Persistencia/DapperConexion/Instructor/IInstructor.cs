@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Persistencia.DapperConexion.Instructor
+namespace NRS.Persistencia.DapperConexion.Instructor
 {
     public interface IInstructor
     {

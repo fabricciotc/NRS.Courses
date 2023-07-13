@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using Dominio;
-using Aplicacion.Cursos;
+using NRS.Dominio;
+using NRS.Aplicacion.Cursos;
 using Microsoft.AspNetCore.Authorization;
-using Persistencia.DapperConexion.Paginacion;
+using NRS.Persistencia.DapperConexion.Paginacion;
 
-namespace WebAPI.Controllers
+namespace NRS.BFF.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

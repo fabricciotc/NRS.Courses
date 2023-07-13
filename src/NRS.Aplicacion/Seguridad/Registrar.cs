@@ -2,16 +2,16 @@ using System.Reflection.Metadata.Ecma335;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Aplicacion.Contratos;
-using Aplicacion.ManejadorError;
-using Dominio;
+using NRS.Aplicacion.Contratos;
+using NRS.Aplicacion.ManejadorError;
+using NRS.Dominio;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Persistencia;
+using NRS.Persistencia;
 using FluentValidation;
 
-namespace Aplicacion.Seguridad
+namespace NRS.Aplicacion.Seguridad
 {
     public class Registrar
     {

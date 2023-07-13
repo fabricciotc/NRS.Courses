@@ -1,14 +1,14 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Aplicacion.ManejadorError;
+using NRS.Aplicacion.ManejadorError;
 using AutoMapper;
-using Dominio;
+using NRS.Dominio;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Persistencia;
+using NRS.Persistencia;
 
-namespace Aplicacion.Cursos
+namespace NRS.Aplicacion.Cursos
 {
     public class ConsultaId
     {

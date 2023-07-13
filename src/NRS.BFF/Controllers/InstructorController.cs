@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Aplicacion.Instructores;
+using NRS.Aplicacion.Instructores;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Persistencia.DapperConexion.Instructor;
+using NRS.Persistencia.DapperConexion.Instructor;
 
-namespace WebAPI.Controllers
+namespace NRS.BFF.Controllers
 {
     public class InstructorController : MiControllerBase
     {

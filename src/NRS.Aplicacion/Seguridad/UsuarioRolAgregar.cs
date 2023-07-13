@@ -1,11 +1,11 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Dominio;
+using NRS.Dominio;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
-namespace Aplicacion.Seguridad
+namespace NRS.Aplicacion.Seguridad
 {
     public class UsuarioRolAgregar
     {

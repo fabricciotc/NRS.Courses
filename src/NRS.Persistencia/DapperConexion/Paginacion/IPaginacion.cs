@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-namespace Persistencia.DapperConexion.Paginacion
+namespace NRS.Persistencia.DapperConexion.Paginacion
 {
     public interface IPaginacion
     {

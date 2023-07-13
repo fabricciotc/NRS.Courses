@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Aplicacion.ManejadorError;
-using Dominio;
+using NRS.Aplicacion.ManejadorError;
+using NRS.Dominio;
 using FluentValidation;
 using MediatR;
-using Persistencia;
+using NRS.Persistencia;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace Aplicacion.Cursos
+namespace NRS.Aplicacion.Cursos
 {
     public class Editar
     {

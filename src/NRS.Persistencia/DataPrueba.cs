@@ -1,9 +1,9 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Dominio;
+using NRS.Dominio;
 using Microsoft.AspNetCore.Identity;
 
-namespace Persistencia
+namespace NRS.Persistencia
 {
     public class DataPrueba
     {

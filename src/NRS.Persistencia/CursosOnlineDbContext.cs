@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Dominio;
-namespace Persistencia
+using NRS.Dominio;
+namespace NRS.Persistencia
 {
     public class CursosOnlineDbContext : IdentityDbContext<Usuario>
     {

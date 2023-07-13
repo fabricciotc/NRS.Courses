@@ -1,4 +1,4 @@
-namespace Aplicacion.Seguridad
+namespace NRS.Aplicacion.Seguridad
 {
     public class UsuarioData
     {

@@ -1,11 +1,11 @@
-﻿using Aplicacion.Documentos;
+﻿using NRS.Aplicacion.Documentos;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace WebAPI.Controllers
+namespace NRS.BFF.Controllers
 {
     public class DocumentoController : MiControllerBase
     {

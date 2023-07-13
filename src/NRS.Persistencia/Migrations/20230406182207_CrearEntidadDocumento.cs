@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Persistencia.Migrations
+namespace NRS.Persistencia.Migrations
 {
     public partial class CrearEntidadDocumento : Migration
     {

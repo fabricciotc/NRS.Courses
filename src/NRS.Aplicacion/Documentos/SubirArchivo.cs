@@ -1,9 +1,9 @@
-﻿using Aplicacion.Contratos;
-using Aplicacion.Seguridad;
-using Dominio;
+﻿using NRS.Aplicacion.Contratos;
+using NRS.Aplicacion.Seguridad;
+using NRS.Dominio;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Persistencia;
+using NRS.Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aplicacion.Documentos
+namespace NRS.Aplicacion.Documentos
 {
     public class SubirArchivo
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Persistencia.DapperConexion.Instructor
+namespace NRS.Persistencia.DapperConexion.Instructor
 {
     public class InstructorModel
     {

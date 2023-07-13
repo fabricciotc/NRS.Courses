@@ -1,9 +1,9 @@
 using System.Linq;
-using Aplicacion.Cursos;
+using NRS.Aplicacion.Cursos;
 using AutoMapper;
-using Dominio;
+using NRS.Dominio;
 
-namespace Aplicacion
+namespace NRS.Aplicacion
 {
     public class MappingProfile : Profile
     {

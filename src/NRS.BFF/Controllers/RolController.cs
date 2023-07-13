@@ -2,12 +2,12 @@ using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Aplicacion.Seguridad;
+using NRS.Aplicacion.Seguridad;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 
-namespace WebAPI.Controllers
+namespace NRS.BFF.Controllers
 {
     public class RolController : MiControllerBase
     {

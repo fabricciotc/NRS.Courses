@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Persistencia;
+using NRS.Persistencia;
 
 #nullable disable
 
-namespace Persistencia.Migrations
+namespace NRS.Persistencia.Migrations
 {
     [DbContext(typeof(CursosOnlineDbContext))]
     [Migration("20230406182207_CrearEntidadDocumento")]

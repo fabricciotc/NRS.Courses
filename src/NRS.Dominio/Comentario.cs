@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Dominio
+namespace NRS.Dominio
 {
     public class Comentario
     {

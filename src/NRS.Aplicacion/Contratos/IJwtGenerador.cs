@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Dominio;
+using NRS.Dominio;
 
-namespace Aplicacion.Contratos
+namespace NRS.Aplicacion.Contratos
 {
     public interface IJwtGenerador
     {

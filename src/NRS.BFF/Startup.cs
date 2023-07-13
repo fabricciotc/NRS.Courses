@@ -4,30 +4,30 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Persistencia;
+using NRS.Persistencia;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
-using Aplicacion.Cursos;
+using NRS.Aplicacion.Cursos;
 using FluentValidation.AspNetCore;
-using WebAPI.Middleware;
-using Dominio;
+using NRS.Dominio;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Authentication;
-using Seguridad;
-using Aplicacion.Contratos;
+using NRS.Seguridad;
+using NRS.Aplicacion.Contratos;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using AutoMapper;
-using Persistencia.DapperConexion;
-using Persistencia.DapperConexion.Instructor;
+using NRS.Persistencia.DapperConexion;
+using NRS.Persistencia.DapperConexion.Instructor;
 using Microsoft.OpenApi.Models;
-using Persistencia.DapperConexion.Paginacion;
+using NRS.Persistencia.DapperConexion.Paginacion;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using NRS.BFF.Middleware;
 
-namespace WebAPI
+namespace NRS.BFF
 {
     public class Startup
     {

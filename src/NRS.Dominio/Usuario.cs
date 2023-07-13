@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Dominio
+namespace NRS.Dominio
 {
     public class Usuario : IdentityUser
     {

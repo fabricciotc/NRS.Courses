@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Linq;
 
-namespace Persistencia.DapperConexion.Paginacion
+namespace NRS.Persistencia.DapperConexion.Paginacion
 {
     public class PaginacionRepositorio : IPaginacion
     {

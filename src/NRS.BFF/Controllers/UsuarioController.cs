@@ -1,11 +1,11 @@
 using System.Diagnostics.Tracing;
 using System.Threading.Tasks;
-using Aplicacion.Seguridad;
-using Dominio;
+using NRS.Aplicacion.Seguridad;
+using NRS.Dominio;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers
+namespace NRS.BFF.Controllers
 {
     [AllowAnonymous]
     public class UsuarioController : MiControllerBase

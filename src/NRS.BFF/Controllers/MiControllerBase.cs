@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WebAPI.Controllers
+namespace NRS.BFF.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -3,9 +3,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation;
 using MediatR;
-using Persistencia.DapperConexion.Paginacion;
+using NRS.Persistencia.DapperConexion.Paginacion;
 
-namespace Aplicacion.Cursos
+namespace NRS.Aplicacion.Cursos
 {
     public class PaginacionCurso
     {

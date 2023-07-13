@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using MediatR;
-using Dominio;
+using NRS.Dominio;
 using Microsoft.EntityFrameworkCore;
-using Persistencia;
+using NRS.Persistencia;
 using System.Threading.Tasks;
 using System.Threading;
 using AutoMapper;
 
-namespace Aplicacion.Cursos
+namespace NRS.Aplicacion.Cursos
 {
     public class Consulta
     {

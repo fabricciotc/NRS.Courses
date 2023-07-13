@@ -1,9 +1,9 @@
 using System.Security.Claims;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
-using Aplicacion.Contratos;
+using NRS.Aplicacion.Contratos;
 
-namespace Seguridad
+namespace NRS.Seguridad
 {
     public class UsuarioSesion : IUsuarioSesion
     {

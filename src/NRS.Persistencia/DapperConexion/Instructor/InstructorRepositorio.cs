@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dapper;
 
-namespace Persistencia.DapperConexion.Instructor
+namespace NRS.Persistencia.DapperConexion.Instructor
 {
     public class InstructorRepositorio : IInstructor
     {

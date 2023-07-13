@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Persistencia.DapperConexion.Instructor;
+using NRS.Persistencia.DapperConexion.Instructor;
 using System.Linq;
 
-namespace Aplicacion.Instructores
+namespace NRS.Aplicacion.Instructores
 {
     public class Consulta
     {

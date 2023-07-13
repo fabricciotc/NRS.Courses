@@ -1,5 +1,5 @@
 using System.Data;
-namespace Persistencia.DapperConexion
+namespace NRS.Persistencia.DapperConexion
 {
     public interface IFactoryConexion
     {

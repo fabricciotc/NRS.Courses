@@ -3,9 +3,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation;
 using MediatR;
-using Persistencia.DapperConexion.Instructor;
+using NRS.Persistencia.DapperConexion.Instructor;
 
-namespace Aplicacion.Instructores
+namespace NRS.Aplicacion.Instructores
 {
     public class Nuevo
     {

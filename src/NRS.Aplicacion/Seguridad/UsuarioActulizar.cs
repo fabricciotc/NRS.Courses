@@ -2,15 +2,15 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Aplicacion.Contratos;
-using Dominio;
+using NRS.Aplicacion.Contratos;
+using NRS.Dominio;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Persistencia;
+using NRS.Persistencia;
 
-namespace Aplicacion.Seguridad
+namespace NRS.Aplicacion.Seguridad
 {
     public class UsuarioActulizar
     {

@@ -2,13 +2,13 @@ using System;
 using System.Text;
 using System.Security.Claims;
 using System.Collections.Generic;
-using Aplicacion.Contratos;
-using Dominio;
+using NRS.Aplicacion.Contratos;
+using NRS.Dominio;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 
-namespace Seguridad
+namespace NRS.Seguridad
 {
     public class JwtGenerador : IJwtGenerador
     {

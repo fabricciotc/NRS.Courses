@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Dominio;
+using NRS.Dominio;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Persistencia;
+using NRS.Persistencia;
 
-namespace Aplicacion.Comentarios
+namespace NRS.Aplicacion.Comentarios
 {
     public class Consulta
     {

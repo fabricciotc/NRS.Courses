@@ -1,12 +1,12 @@
 using System.Net;
 using System;
 using System.Threading.Tasks;
-using Aplicacion.ManejadorError;
+using NRS.Aplicacion.ManejadorError;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace WebAPI.Middleware
+namespace NRS.BFF.Middleware
 {
     public class ManejadorErrorMiddleware
     {

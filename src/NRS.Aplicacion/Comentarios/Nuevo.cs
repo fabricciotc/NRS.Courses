@@ -1,12 +1,12 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Dominio;
+using NRS.Dominio;
 using FluentValidation;
 using MediatR;
-using Persistencia;
+using NRS.Persistencia;
 
-namespace Aplicacion.Comentarios
+namespace NRS.Aplicacion.Comentarios
 {
     public class Nuevo
     {

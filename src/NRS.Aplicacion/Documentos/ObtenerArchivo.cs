@@ -1,7 +1,7 @@
-﻿using Aplicacion.ManejadorError;
+﻿using NRS.Aplicacion.ManejadorError;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Persistencia;
+using NRS.Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aplicacion.Documentos
+namespace NRS.Aplicacion.Documentos
 {
     public class ObtenerArchivo
     {

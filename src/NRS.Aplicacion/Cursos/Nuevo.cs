@@ -2,13 +2,13 @@ using System.Security.Cryptography.X509Certificates;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Dominio;
+using NRS.Dominio;
 using MediatR;
-using Persistencia;
+using NRS.Persistencia;
 using FluentValidation;
 using System.Collections.Generic;
 
-namespace Aplicacion.Cursos
+namespace NRS.Aplicacion.Cursos
 {
     public class Nuevo
     {

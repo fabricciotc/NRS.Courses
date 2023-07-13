@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Aplicacion.Cursos
+namespace NRS.Aplicacion.Cursos
 {
     public class CursoDTO
     {
