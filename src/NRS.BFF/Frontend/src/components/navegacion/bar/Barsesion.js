@@ -78,15 +78,13 @@ const Barsesion = (props) => {
   };
 
   useEffect(() => {
-    if (sesionUsuario != null) {
+    if (sesionUsuario && sesionUsuario.autenticado) {
       setUsuario(sesionUsuario.usuario);
       setUsuario((anterior) => ({
         ...anterior,
         fotoUrl: sesionUsuario.usuario.imagenPerfil,
         imagenPerfil: null,
       }));
-    } else {
-      setUsuario(null);
     }
   }, [sesionUsuario]);
 
@@ -127,8 +125,8 @@ const Barsesion = (props) => {
       </Drawer>
 
       <Toolbar>
-        {usuario ? (
-          usuario ? (
+        {sesionUsuario ? (
+          sesionUsuario.autenticado ? (
             <IconButton color="inherit" onClick={abrirMenuIzquierdoAction}>
               <i className="material-icons">menu</i>
             </IconButton>
@@ -137,8 +135,8 @@ const Barsesion = (props) => {
         <Typography variant="h6">Cursos Online</Typography>
         <div className={classes.grow}></div>
         <div className={classes.seccionDesktop}>
-          {usuario ? (
-            usuario ? (
+          {sesionUsuario ? (
+            sesionUsuario.autenticado ? (
               <>
                 <Button color="inherit" onClick={salirSesionApp}>
                   Salir

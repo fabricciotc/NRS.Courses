@@ -3,7 +3,7 @@ import { useStateValue } from "../../../context/storage";
 import { Redirect, Route } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProtectedRoute({ component: Component, ...rest }) {
-  const [{ sesionUsuario }, dispatch] = useStateValue;
+  const [{ sesionUsuario }, dispatch] = useStateValue();
 
   return (
     <Route

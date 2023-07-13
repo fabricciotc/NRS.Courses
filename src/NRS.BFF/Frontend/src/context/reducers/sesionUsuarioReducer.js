@@ -16,11 +16,11 @@ const sesionUsuarioReducer = (state = initialState, action) => {
         usuario: action.sesion,
         autenticado: action.autenticado,
       };
-    case "SALIR_SESION":
+    case "CERRAR_SESION":
       return {
         ...state,
-        usuario: action.nuevoUsuario,
-        autenticado: action.autenticado,
+        usuario: null,
+        autenticado: false,
       };
     case "ACTUALIZAR_USUARIO":
       return {
