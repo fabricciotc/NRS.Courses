@@ -4,7 +4,7 @@ import Barsesion from "./bar/Barsesion";
 
 const AppNavbar = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="static" className="container">
       <Barsesion></Barsesion>
     </AppBar>
   );

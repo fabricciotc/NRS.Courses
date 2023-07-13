@@ -16,15 +16,18 @@ namespace NRS.Aplicacion.Seguridad
 {
     public class Login
     {
-        public class Ejecuta : IRequest<UsuarioData>{
-            public string Email{set;get;}
-            public string Password{set;get;}
+        public class Ejecuta : IRequest<UsuarioData>
+        {
+            public string Email { set; get; }
+            public string Password { set; get; }
         }
-        public class EjecutaValidacion : AbstractValidator<Ejecuta>{
-             public EjecutaValidacion(){
-                RuleFor( x => x.Email).NotEmpty();
-                RuleFor( x => x.Password).NotEmpty();
-             }   
+        public class EjecutaValidacion : AbstractValidator<Ejecuta>
+        {
+            public EjecutaValidacion()
+            {
+                RuleFor(x => x.Email).NotEmpty();
+                RuleFor(x => x.Password).NotEmpty();
+            }
         }
         public class Manejador : IRequestHandler<Ejecuta, UsuarioData>
         {
@@ -33,21 +36,23 @@ namespace NRS.Aplicacion.Seguridad
             private readonly IJwtGenerador _jwtGenerador;
             private readonly CursosOnlineDbContext _context;
 
-            public Manejador(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, IJwtGenerador jwtGenerador, CursosOnlineDbContext context){
-                this._signInManager=signInManager;
-                this._userManager=userManager;
+            public Manejador(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, IJwtGenerador jwtGenerador, CursosOnlineDbContext context)
+            {
+                this._signInManager = signInManager;
+                this._userManager = userManager;
                 this._jwtGenerador = jwtGenerador;
-                this._context=context;
+                this._context = context;
 
             }
             public async Task<UsuarioData> Handle(Ejecuta request, CancellationToken cancellationToken)
             {
                 var usuario = await _userManager.FindByEmailAsync(request.Email);
-                if(usuario==null){
-                    throw new ManejadorExcepcion(HttpStatusCode.Unauthorized, new { mensaje = "Crendenciales Incorrectas" }); 
+                if (usuario == null)
+                {
+                    throw new ManejadorExcepcion(HttpStatusCode.Unauthorized, new { mensaje = "Crendenciales Incorrectas" });
                 }
                 var roles = await _userManager.GetRolesAsync(usuario);
-                var result = await _signInManager.CheckPasswordSignInAsync(usuario,request.Password,false);
+                var result = await _signInManager.CheckPasswordSignInAsync(usuario, request.Password, false);
 
                 var imagenPerfil = await _context.Documento.FirstOrDefaultAsync(x => x.ObjetoReferencia == new Guid(usuario.Id));
                 var usuarioResponse = new UsuarioData
@@ -58,8 +63,9 @@ namespace NRS.Aplicacion.Seguridad
                     Email = usuario.Email,
                     Imagen = null
                 };
-                
-                if (imagenPerfil != null) {
+
+                if (imagenPerfil != null)
+                {
                     var imagenCliente = new ImagenGeneral
                     {
                         Data = Convert.ToBase64String(imagenPerfil.Contenido),
@@ -69,7 +75,7 @@ namespace NRS.Aplicacion.Seguridad
                     usuarioResponse.ImagenPerfil = imagenCliente;
                 }
 
-                return result == SignInResult.Success ? usuarioResponse : throw new ManejadorExcepcion(System.Net.HttpStatusCode.Unauthorized, new { mensaje = "Crendenciales Incorrectas" }); 
+                return result == SignInResult.Success ? usuarioResponse : throw new ManejadorExcepcion(System.Net.HttpStatusCode.Unauthorized, new { mensaje = "Crendenciales Incorrectas" });
             }
         }
     }

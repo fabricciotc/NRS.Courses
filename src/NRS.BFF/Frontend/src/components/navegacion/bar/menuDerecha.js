@@ -15,7 +15,9 @@ export const MenuDerecha = ({
       {usuario ? (
         <>
           <ListItem button component={Link}>
-            <Avatar src={usuario ? usuario.foto || FotoUsuarioTheme : null} />
+            <Avatar
+              src={usuario ? usuario.fotoUrl || FotoUsuarioTheme : null}
+            />
             <ListItemText
               classes={{ primary: classes.listItemText }}
               primary={usuario ? usuario.nombreCompleto : null}
