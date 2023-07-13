@@ -16,12 +16,12 @@ import ImageUploader from "react-images-upload";
 import { obtenerDataImagen } from "../../actions/ImagenAction";
 
 const PerfilUsuario = (props) => {
+  const [{ sesionUsuario }, dispatch] = useStateValue();
   const [usuario, setUsuario] = useState({
     nombreCompleto: "",
     email: "",
     password: "",
-    confirmarPassword: "",
-    userName: "",
+    username: "",
     imagenPerfil: null,
     fotoUrl: "",
   });
@@ -34,20 +34,20 @@ const PerfilUsuario = (props) => {
     }));
   };
 
-  const [{ sesionUsuario }, dispatch] = useStateValue();
-
   useEffect(() => {
-    console.log(sesionUsuario);
-    setUsuario(sesionUsuario.usuario);
-    setUsuario((anterior) => ({
-      ...anterior,
-      fotoUrl: sesionUsuario.usuario.imagenPerfil,
-    }));
+    if (sesionUsuario) {
+      setUsuario(sesionUsuario.usuario);
+      setUsuario((anterior) => ({
+        ...anterior,
+        fotoUrl: sesionUsuario.usuario.imagenPerfil,
+        imagenPerfil: null,
+      }));
+    }
   }, []);
 
   const guardarUsuario = (e) => {
     e.preventDefault();
-    actulizarUsuario(usuario).then((res) => {
+    actulizarUsuario(usuario, dispatch).then((res) => {
       console.log(res);
       if (res.status === 200) {
         dispatch({
@@ -101,7 +101,7 @@ const PerfilUsuario = (props) => {
       <div style={style.paper}>
         <Avatar
           style={style.avatar}
-          src={usuario.fotoUrl || reactFoto}
+          src={usuario ? usuario.fotoUrl || reactFoto : null}
         ></Avatar>
         <Typography component="h1" variant="h5">
           Perfil de Usuario
@@ -139,27 +139,17 @@ const PerfilUsuario = (props) => {
                 variant="outlined"
               ></TextField>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={12}>
               <TextField
-                fullWidth
                 name="password"
                 value={usuario.password}
-                label="Ingrese su Password"
                 onChange={ingresarValoresMemoria}
-                variant="outlined"
+                autoComplete="new-password"
                 type="password"
-              ></TextField>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
+                variant="outlined"
                 fullWidth
-                name="confirmarPassword"
-                value={usuario.confirmarPassword}
-                label="Confirme su Password"
-                variant="outlined"
-                onChange={ingresarValoresMemoria}
-                type="password"
-              ></TextField>
+                label="Ingrese password"
+              />
             </Grid>
             <Grid item xs={12} md={12}>
               <ImageUploader

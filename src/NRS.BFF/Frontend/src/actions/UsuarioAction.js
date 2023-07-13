@@ -39,10 +39,21 @@ export const obtenerUsuarioActual = (dispatch) => {
       });
   });
 };
-export const actulizarUsuario = (usuario) => {
+export const actulizarUsuario = (usuario, dispatch) => {
   return new Promise((resolve, eject) => {
     HttpCliente.put("/usuario", usuario)
       .then((res) => {
+        if (res.data && res.data.imagenPerfil) {
+          let fotoPerfil = res.data.imagenPerfil;
+          const nuevoFile =
+            "data:image/" + fotoPerfil.extension + ";base64," + fotoPerfil.data;
+          res.data.imagenPerfil = nuevoFile;
+        }
+        dispatch({
+          type: "ACTUALIZAR_USUARIO",
+          nuevoUsuario: res.data,
+          autenticado: true,
+        });
         resolve(res);
       })
       .catch((error) => {
@@ -50,11 +61,22 @@ export const actulizarUsuario = (usuario) => {
       });
   });
 };
-export const loginUsuario = (usuario) => {
+export const loginUsuario = (usuario, dispatch) => {
   return new Promise((resolve, eject) => {
     instancia
       .post("/usuario/login", usuario)
       .then((res) => {
+        if (res.data && res.data.imagenPerfil) {
+          let fotoPerfil = res.data.imagenPerfil;
+          const nuevoFile =
+            "data:image/" + fotoPerfil.extension + ";base64," + fotoPerfil.data;
+          res.data.imagenPerfil = nuevoFile;
+        }
+        dispatch({
+          type: "INICIAR_SESION",
+          sesion: res.data,
+          autenticado: true,
+        });
         resolve(res);
       })
       .catch((error) => {

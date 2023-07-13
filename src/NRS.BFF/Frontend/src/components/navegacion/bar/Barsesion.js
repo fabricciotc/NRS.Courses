@@ -7,7 +7,7 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useStateValue } from "../../../context/storage";
 import FotoUsuarioTheme from "../../../logo.svg";
 import { MenuIzquierda } from "./menuIzquierda";
@@ -50,7 +50,7 @@ const Barsesion = (props) => {
   const [{ sesionUsuario }, dispatch] = useStateValue();
   const [abrirMenuIzquierdo, setAbrirmenuIzquierda] = useState(false);
   const [abrirMenuDerecha, setAbrirmenuDerecha] = useState(false);
-
+  const [usuario, setUsuario] = useState({});
   const cerrarMenuIzquierdo = () => {
     setAbrirmenuIzquierda(false);
   };
@@ -76,6 +76,19 @@ const Barsesion = (props) => {
   const registroApp = () => {
     props.history.push("/auth/registrar");
   };
+
+  useEffect(() => {
+    if (sesionUsuario != null) {
+      setUsuario(sesionUsuario.usuario);
+      setUsuario((anterior) => ({
+        ...anterior,
+        fotoUrl: sesionUsuario.usuario.imagenPerfil,
+        imagenPerfil: null,
+      }));
+    } else {
+      setUsuario(null);
+    }
+  }, [sesionUsuario]);
 
   return (
     <React.Fragment>
@@ -106,7 +119,7 @@ const Barsesion = (props) => {
           <MenuDerecha
             classes={classes}
             salirSesion={salirSesionApp}
-            usuario={sesionUsuario ? sesionUsuario.usuario : null}
+            usuario={usuario ? usuario : null}
             loginApp={loginApp}
             registroApp={registroApp}
           />
@@ -114,8 +127,8 @@ const Barsesion = (props) => {
       </Drawer>
 
       <Toolbar>
-        {sesionUsuario ? (
-          sesionUsuario.usuario ? (
+        {usuario ? (
+          usuario ? (
             <IconButton color="inherit" onClick={abrirMenuIzquierdoAction}>
               <i className="material-icons">menu</i>
             </IconButton>
@@ -124,19 +137,15 @@ const Barsesion = (props) => {
         <Typography variant="h6">Cursos Online</Typography>
         <div className={classes.grow}></div>
         <div className={classes.seccionDesktop}>
-          {sesionUsuario ? (
-            sesionUsuario.usuario ? (
+          {usuario ? (
+            usuario ? (
               <>
                 <Button color="inherit" onClick={salirSesionApp}>
                   Salir
                 </Button>
 
-                <Button color="inherit">
-                  {sesionUsuario.usuario.nombreCompleto}
-                </Button>
-                <Avatar
-                  src={sesionUsuario.usuario.imagenPerfil || FotoUsuarioTheme}
-                ></Avatar>
+                <Button color="inherit">{usuario.nombreCompleto}</Button>
+                <Avatar src={usuario.fotoUrl || FotoUsuarioTheme}></Avatar>
               </>
             ) : (
               <>

@@ -11,6 +11,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { loginUsuario } from "../../actions/UsuarioAction";
 import { useStateValue } from "../../context/storage";
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+
 const Login = (props) => {
   const [usuario, setUsuario] = useState({
     Email: "",
@@ -29,21 +30,8 @@ const Login = (props) => {
 
   const loginUsuarioBtn = (e) => {
     e.preventDefault();
-    loginUsuario(usuario).then((res) => {
+    loginUsuario(usuario, dispatch).then((res) => {
       if (res.status === 200) {
-        console.log(res.data);
-        dispatch({
-          type: "INICIAR_SESION",
-          openMensaje: {
-            sesion: {
-              nombreCompleto: res.data.nombreCompleto,
-              email: res.data.email,
-              userName: res.data.username,
-              foto: res.data.imagen,
-            },
-            autenticado: true,
-          },
-        });
         window.localStorage.setItem("tokenSeguridad", res.data.token);
         props.history.push("/auth/perfil");
       } else if (res.status === 401) {

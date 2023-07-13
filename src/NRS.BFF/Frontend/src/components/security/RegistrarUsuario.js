@@ -35,7 +35,7 @@ const RegistrarUsuario = (props) => {
 
   const enviarRegistro = (e) => {
     e.preventDefault();
-    registrarUsuario(usuario).then((response) => {
+    registrarUsuario(usuario, dispatch).then((response) => {
       if (response.status === 200) {
         window.localStorage.setItem("tokenSeguridad", response.data.token);
       } else if (response.status === 401) {

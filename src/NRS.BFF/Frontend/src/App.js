@@ -11,6 +11,7 @@ import { useStateValue } from "./context/storage";
 import { useEffect, useState } from "react";
 import { obtenerUsuarioActual } from "./actions/UsuarioAction";
 import Alert from "@material-ui/lab/Alert";
+import ProtectedRoute from "./components/navegacion/bar/ProtectedRoute";
 
 const App = () => {
   const [{ sesionUsuario, openSnackBar }, dispatch] = useStateValue();
@@ -73,12 +74,12 @@ const App = () => {
                 path="/auth/registrar"
                 component={RegistrarUsuario}
               />
-              <Route exact path="/auth/perfil" component={PerfilUsuario} />
-              <Route
+              <ProtectedRoute
                 exact
-                path="/"
-                component={sesionUsuario != null ? PerfilUsuario : Login}
+                path="/auth/perfil"
+                component={PerfilUsuario}
               />
+              <ProtectedRoute exact path="/" component={PerfilUsuario} />
             </Switch>
           </Grid>
         </MuiThemeProvider>
