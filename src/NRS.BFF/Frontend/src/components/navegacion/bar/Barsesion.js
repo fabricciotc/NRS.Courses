@@ -10,6 +10,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useStateValue } from "../../../context/storage";
 import FotoUsuarioTheme from "../../../logo.svg";
+import Logo from "../../../interbank.svg";
 import { MenuIzquierda } from "./menuIzquierda";
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { MenuDerecha } from "./menuDerecha";
@@ -132,7 +133,7 @@ const Barsesion = (props) => {
             </IconButton>
           ) : null
         ) : null}
-        <Typography variant="h6">Cursos Online</Typography>
+        <img src={Logo} alt="logo marca" />
         <div className={classes.grow}></div>
         <div className={classes.seccionDesktop}>
           {sesionUsuario ? (
@@ -147,21 +148,31 @@ const Barsesion = (props) => {
               </>
             ) : (
               <>
-                <Button color="inherit" onClick={loginApp}>
-                  Login
+                <Button
+                  color="primary"
+                  onClick={loginApp}
+                  variant="contained"
+                  disableElevation
+                >
+                  SIGN IN
                 </Button>
                 <Button color="inherit" onClick={registroApp}>
-                  Registro
+                  SIGN UP
                 </Button>
               </>
             )
           ) : (
             <>
-              <Button color="inherit" onClick={loginApp}>
-                Login
+              <Button
+                color="primary"
+                onClick={loginApp}
+                variant="contained"
+                disableElevation
+              >
+                SIGN IN
               </Button>
               <Button color="inherit" onClick={registroApp}>
-                Registro
+                SIGN UP
               </Button>
             </>
           )}

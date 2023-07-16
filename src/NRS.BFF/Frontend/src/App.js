@@ -3,7 +3,7 @@ import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme/theme";
 import Login from "./components/security/Login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Grid, Snackbar } from "@material-ui/core";
+import { Container, Grid, Snackbar } from "@material-ui/core";
 import RegistrarUsuario from "./components/security/RegistrarUsuario";
 import PerfilUsuario from "./components/security/PerfilUsuario";
 import AppNavbar from "./components/navegacion/AppNavbar";
@@ -67,20 +67,22 @@ const App = () => {
         <MuiThemeProvider theme={theme}>
           <AppNavbar></AppNavbar>
           <Grid container>
-            <Switch>
-              <Route exact path="/auth/login" component={Login} />
-              <Route
-                exact
-                path="/auth/registrar"
-                component={RegistrarUsuario}
-              />
-              <ProtectedRoute
-                exact
-                path="/auth/perfil"
-                component={PerfilUsuario}
-              />
-              <ProtectedRoute exact path="/" component={PerfilUsuario} />
-            </Switch>
+            <Container maxWidth="lg">
+              <Switch>
+                <Route exact path="/auth/login" component={Login} />
+                <Route
+                  exact
+                  path="/auth/registrar"
+                  component={RegistrarUsuario}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/auth/perfil"
+                  component={PerfilUsuario}
+                />
+                <ProtectedRoute exact path="/" component={PerfilUsuario} />
+              </Switch>
+            </Container>
           </Grid>
         </MuiThemeProvider>
       </Router>
