@@ -2,7 +2,7 @@
 
 # Stage 1: Build the React.js project
 FROM node:14 AS frontend-build
-WORKDIR /src/NRS.BFF/Frontend
+WORKDIR /src
 COPY NRS.BFF/Frontend/package*.json ./
 RUN npm install
 COPY NRS.BFF/Frontend ./
