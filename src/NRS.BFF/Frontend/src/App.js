@@ -4,7 +4,7 @@ import theme from "./theme/theme";
 import Login from "./components/security/Login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container, Grid, Snackbar } from "@material-ui/core";
-import RegistrarUsuario from "./components/security/RegistrarUsuario";
+import Registro from "./components/security/Registro";
 import PerfilUsuario from "./components/security/PerfilUsuario";
 import AppNavbar from "./components/navegacion/AppNavbar";
 import { useStateValue } from "./context/storage";
@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { obtenerUsuarioActual } from "./actions/UsuarioAction";
 import Alert from "@material-ui/lab/Alert";
 import ProtectedRoute from "./components/navegacion/bar/ProtectedRoute";
+import style from "./components/tools/Style";
 
 const App = () => {
   const [{ sesionUsuario, openSnackBar }, dispatch] = useStateValue();
@@ -66,15 +67,11 @@ const App = () => {
       <Router>
         <MuiThemeProvider theme={theme}>
           <AppNavbar></AppNavbar>
-          <Grid container>
+          <Grid container style={style.mainContainer}>
             <Container maxWidth="lg">
               <Switch>
                 <Route exact path="/auth/login" component={Login} />
-                <Route
-                  exact
-                  path="/auth/registrar"
-                  component={RegistrarUsuario}
-                />
+                <Route exact path="/auth/registrar" component={Registro} />
                 <ProtectedRoute
                   exact
                   path="/auth/perfil"

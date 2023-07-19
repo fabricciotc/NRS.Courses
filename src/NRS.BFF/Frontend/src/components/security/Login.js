@@ -1,7 +1,5 @@
 import {
   Container,
-  Avatar,
-  Typography,
   TextField,
   Button,
   Card,
@@ -10,10 +8,10 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 import style from "../tools/Style";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { loginUsuario } from "../../actions/UsuarioAction";
 import { useStateValue } from "../../context/storage";
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import SignIn from "../../assets/images/banner-login.png";
 
 const Login = (props) => {
   const [usuario, setUsuario] = useState({
@@ -60,73 +58,60 @@ const Login = (props) => {
   };
 
   return (
-    <Grid
-      container
-      spacing={0}
-      direction="column"
-      alignItems="center"
-      justify="center"
-      style={{ minHeight: "85vh" }}
-    >
-      <Grid container justify="center">
-        <Container maxWidth="xs">
-          <Card>
-            <CardContent>
-              <div style={style.paper}>
-                <Avatar style={style.avatar}>
-                  <LockOutlinedIcon style={style.icon}></LockOutlinedIcon>
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                  Login de Usuario
-                </Typography>
-                <form style={style.form}>
-                  <TextField
-                    variant="outlined"
-                    name="Email"
-                    value={usuario.Email}
-                    margin="normal"
-                    label="Ingrese Email"
-                    onChange={ingresarValoresMemoria}
-                    fullWidth
-                  ></TextField>
-                  <TextField
-                    type="password"
-                    name="Password"
-                    margin="normal"
-                    value={usuario.Password}
-                    variant="outlined"
-                    label="Ingrese su Password"
-                    onChange={ingresarValoresMemoria}
-                    fullWidth
-                  ></TextField>
-                  <Button
-                    stype="submit"
-                    onClick={loginUsuarioBtn}
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    style={style.submit}
-                  >
-                    Enviar
-                  </Button>
-                  <Button
-                    stype="submit"
-                    onClick={() => {
-                      props.history.push("/auth/registrar");
-                    }}
-                    fullWidth
-                    variant="contained"
-                    color="danger"
-                    style={style.submit}
-                  >
-                    Registrarse
-                  </Button>
-                </form>
-              </div>
-            </CardContent>
-          </Card>
-        </Container>
-      </Grid>
+    <Grid container style={style.authBackground}>
+      <Container maxWidth="xs" style={style.centered}>
+        <Card>
+          <CardContent>
+            <div style={style.paper}>
+              <img src={SignIn} style={style.loginIcon} alt="Login logo" />
+              <form style={style.form}>
+                <TextField
+                  variant="outlined"
+                  name="Email"
+                  value={usuario.Email}
+                  margin="normal"
+                  label="Email"
+                  onChange={ingresarValoresMemoria}
+                  fullWidth
+                ></TextField>
+                <TextField
+                  type="password"
+                  name="Password"
+                  margin="normal"
+                  value={usuario.Password}
+                  variant="outlined"
+                  label="Password"
+                  onChange={ingresarValoresMemoria}
+                  fullWidth
+                ></TextField>
+                <Button
+                  stype="submit"
+                  onClick={loginUsuarioBtn}
+                  fullWidth
+                  variant="contained"
+                  disableElevation
+                  color="primary"
+                  style={style.submit}
+                >
+                  SIGN IN
+                </Button>
+                <Button
+                  stype="submit"
+                  onClick={() => {
+                    props.history.push("/auth/registrar");
+                  }}
+                  fullWidth
+                  variant="outlined"
+                  color="primary"
+                  style={style.submit}
+                >
+                  SIGN UP
+                </Button>
+              </form>
+            </div>
+          </CardContent>
+        </Card>
+      </Container>
     </Grid>
   );
 };

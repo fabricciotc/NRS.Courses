@@ -99,70 +99,88 @@ const PerfilUsuario = (props) => {
   return (
     <Container maxWidth="md" component="main" justify="center">
       <div style={style.paper}>
-        <Avatar
-          style={style.avatar}
-          src={usuario ? usuario.fotoUrl || reactFoto : null}
-        ></Avatar>
-        <Typography component="h1" variant="h5">
-          Perfil de Usuario
-        </Typography>
-
         <form style={style.form}>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={12}>
-              <TextField
-                fullWidth
-                name="nombreCompleto"
-                value={usuario.nombreCompleto}
-                onChange={ingresarValoresMemoria}
-                label="Ingrese su Nombre y Apellidos"
-                variant="outlined"
-              ></TextField>
+            <Grid item xs={12} md={6}>
+              <Avatar
+                item
+                xs={12}
+                md={12}
+                style={style.avatar}
+                src={usuario ? usuario.fotoUrl || reactFoto : null}
+              ></Avatar>
+
+              <Grid item xs={12} md={12}>
+                <ImageUploader
+                  withIcon={false}
+                  key={fotoKey}
+                  singleImage={true}
+                  buttonText="Seleccione una Imagen de Perfil"
+                  onChange={subitFoto}
+                  imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
+                  maxFileSize={5242880}
+                ></ImageUploader>
+              </Grid>
             </Grid>
             <Grid item xs={12} md={6}>
-              <TextField
-                fullWidth
-                name="email"
-                value={usuario.email}
-                onChange={ingresarValoresMemoria}
-                label="Ingrese su Email"
-                variant="outlined"
-              ></TextField>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                fullWidth
-                name="username"
-                value={usuario.username}
-                onChange={ingresarValoresMemoria}
-                label="Ingrese su Username"
-                variant="outlined"
-              ></TextField>
-            </Grid>
-            <Grid item xs={12} md={12}>
-              <TextField
-                name="password"
-                value={usuario.password}
-                onChange={ingresarValoresMemoria}
-                autoComplete="new-password"
-                type="password"
-                variant="outlined"
-                fullWidth
-                label="Ingrese password"
-              />
-            </Grid>
-            <Grid item xs={12} md={12}>
-              <ImageUploader
-                withIcon={false}
-                key={fotoKey}
-                singleImage={true}
-                buttonText="Seleccione una Imagen de Perfil"
-                onChange={subitFoto}
-                imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
-                maxFileSize={5242880}
-              ></ImageUploader>
+              <Typography variant="h4" gutterBottom={true}>
+                Datos del Usuario
+              </Typography>
+              <Typography gutterBottom={true} variant="string" paragraph={true}>
+                ¡Bienvenido a tu página de perfil de usuario! Aquí podrás ver y
+                actualizar toda tu información personal. Toma el control y
+                mantén tus datos actualizados para asegurarte de que siempre
+                tengamos la información correcta.
+              </Typography>
+              <Grid item xs={12} md={12}>
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  name="nombreCompleto"
+                  value={usuario.nombreCompleto}
+                  onChange={ingresarValoresMemoria}
+                  label="Ingrese su Nombre y Apellidos"
+                  variant="outlined"
+                ></TextField>
+              </Grid>
+              <Grid item xs={12} md={12}>
+                <TextField
+                  fullWidth
+                  name="email"
+                  value={usuario.email}
+                  margin="normal"
+                  onChange={ingresarValoresMemoria}
+                  label="Ingrese su Email"
+                  variant="outlined"
+                ></TextField>
+              </Grid>
+              <Grid item xs={12} md={12}>
+                <TextField
+                  fullWidth
+                  name="username"
+                  margin="normal"
+                  value={usuario.username}
+                  onChange={ingresarValoresMemoria}
+                  label="Ingrese su Username"
+                  variant="outlined"
+                ></TextField>
+              </Grid>
+              <Grid item xs={12} md={12}>
+                <TextField
+                  name="password"
+                  value={usuario.password}
+                  onChange={ingresarValoresMemoria}
+                  autoComplete="new-password"
+                  type="password"
+                  margin="normal"
+                  variant="outlined"
+                  fullWidth
+                  label="Ingrese password"
+                />
+              </Grid>
             </Grid>
           </Grid>
+
           <Grid container justify="center">
             <Button
               fullWidth
