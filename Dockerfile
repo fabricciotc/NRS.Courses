@@ -30,6 +30,6 @@ RUN dotnet publish "NRS.BFF.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY --from=frontend-build /src/NRS.BFF/Frontend/build ./wwwroot
+COPY --from=frontend-build /src/NRS.BFF/Frontend/build ./wwwroot/Frontend
 EXPOSE 80
 ENTRYPOINT ["dotnet", "NRS.BFF.dll"]
