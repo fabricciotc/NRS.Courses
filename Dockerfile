@@ -18,7 +18,6 @@ RUN dotnet publish NRS.BFF/NRS.BFF.csproj -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
 WORKDIR /app
 COPY --from=dotnet-build /app/publish .
-RUN ls /src/build 
 RUN ls /src 
 COPY --from=frontend-build /src/build ./wwwroot/Frontend 
 EXPOSE 80
