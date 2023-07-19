@@ -9,27 +9,26 @@ COPY src/NRS.BFF/Frontend ./
 RUN npm run build
 
 # Stage 2: Build the C# solution
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS dotnet-build
 WORKDIR /src
-COPY ["NRS.BFF/NRS.BFF.csproj", "NRS.BFF/"]
-COPY ["NRS.Aplicacion/NRS.Aplicacion.csproj", "NRS.Aplicacion/"]
-COPY ["NRS.Persistencia/NRS.Persistencia.csproj", "NRS.Persistencia/"]
-COPY ["NRS.Dominio/NRS.Dominio.csproj", "NRS.Dominio/"]
-COPY ["NRS.Seguridad/NRS.Seguridad.csproj", "NRS.Seguridad/"]
+COPY src/NRS.BFF/NRS.BFF.csproj NRS.BFF/
+COPY src/NRS.Aplicacion/NRS.Aplicacion.csproj NRS.Aplicacion/
+COPY src/NRS.Persistencia/NRS.Persistencia.csproj NRS.Persistencia/
+COPY src/NRS.Dominio/NRS.Dominio.csproj NRS.Dominio/
+COPY src/NRS.Seguridad/NRS.Seguridad.csproj NRS.Seguridad/
 RUN dotnet restore "NRS.BFF/NRS.BFF.csproj"
-COPY . .
+COPY src/NRS.BFF .
 WORKDIR "/src/NRS.BFF"
 RUN dotnet build "NRS.BFF.csproj" -c Release -o /app/build
 
-FROM build AS publish
+# Stage 3: Publish the .NET solution
+FROM dotnet-build AS dotnet-publish
 RUN dotnet publish "NRS.BFF.csproj" -c Release -o /app/publish
 
-FROM base AS final
+# Stage 4: Create the final runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=dotnet-publish /app/publish .
 COPY --from=frontend-build /src/NRS.BFF/Frontend/build ./wwwroot/Frontend
 EXPOSE 80
 ENTRYPOINT ["dotnet", "NRS.BFF.dll"]
