@@ -47,7 +47,8 @@ namespace NRS.BFF
             }));
             services.AddDbContext<CursosOnlineDbContext>(opt =>
             {
-                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                //opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                opt.UseInMemoryDatabase("Courses");
             });
             services.AddOptions();
             services.Configure<conexionConfiguracion>(Configuration.GetSection("ConnectionStrings"));
