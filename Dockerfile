@@ -1,18 +1,23 @@
-# Stage 1: Build and publish the .NET solution
+# Stage 1: Build the React.js project
+FROM node:14 AS frontend-build
+WORKDIR /src/NRS.BFF/Frontend
+COPY src/NRS.BFF/Frontend/package*.json ./
+RUN npm install
+COPY src/NRS.BFF/Frontend ./
+RUN npm run build
+
+# Stage 2: Build and publish the .NET solution
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS dotnet-build
 WORKDIR /src
-
-# Install Node.js and npm to support Elm asset build
-RUN apt-get update && apt-get install -y nodejs npm
-RUN npm install -g elm
-
 COPY src .
 RUN dotnet restore NRS.BFF/NRS.BFF.csproj
-RUN dotnet publish NRS.BFF/NRS.BFF.csproj -c Release -o /app/publish
+RUN dotnet publish NRS.BFF/NRS.BFF.csproj -c Release -o /src/publish
 
-# Stage 2: Create the final runtime image
+# Stage 3: Create the final runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
-WORKDIR /app
-COPY --from=dotnet-build /app/publish .
+WORKDIR /src
+RUN ls src 
+COPY --from=dotnet-build /src/publish .
+COPY --from=frontend-build /src/NRS.BFF/build ./wwwroot 
 EXPOSE 80
 ENTRYPOINT ["dotnet", "NRS.BFF.dll"]
