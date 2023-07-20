@@ -1,12 +1,4 @@
-# Stage 1: Build the React.js project
-FROM node:14 AS frontend-build
-WORKDIR /src/NRS.BFF/Frontend
-COPY src/NRS.BFF/Frontend/package*.json ./
-RUN npm install
-COPY src/NRS.BFF/Frontend ./
-RUN npm run build
-
-# Stage 2: Build and publish the .NET solution
+# Stage 1: Build and publish the .NET solution
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS dotnet-build
 WORKDIR /src
 COPY src .
@@ -17,7 +9,5 @@ RUN dotnet publish NRS.BFF/NRS.BFF.csproj -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
 WORKDIR /app
 COPY --from=dotnet-build /app/publish .
-RUN ls app 
-COPY --from=frontend-build src/build ./wwwroot/Frontend 
 EXPOSE 80
 ENTRYPOINT ["dotnet", "NRS.BFF.dll"]
