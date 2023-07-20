@@ -5,6 +5,7 @@ COPY src/NRS.BFF/Frontend/package*.json ./
 RUN npm install
 COPY src/NRS.BFF/Frontend ./
 RUN npm run build
+RUN ls src 
 
 # Stage 2: Build and publish the .NET solution
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS dotnet-build
