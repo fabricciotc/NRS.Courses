@@ -1,9 +1,9 @@
 # Stage 1: Build the React.js frontend
 FROM node:14 AS frontend-build
 WORKDIR /src/NRS.BFF/Frontend
-COPY Frontend/package*.json ./
+COPY src/NRS.BFF/Frontend/package*.json ./
 RUN npm install
-COPY Frontend ./
+COPY src/NRS.BFF/Frontend ./
 RUN npm run build
 
 # Stage 2: Build and publish the .NET solution
