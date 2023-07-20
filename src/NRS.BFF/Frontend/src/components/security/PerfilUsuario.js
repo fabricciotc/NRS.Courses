@@ -139,7 +139,7 @@ const PerfilUsuario = (props) => {
                   name="nombreCompleto"
                   value={usuario.nombreCompleto}
                   onChange={ingresarValoresMemoria}
-                  label="Ingrese su Nombre y Apellidos"
+                  label="Fullname"
                   variant="outlined"
                 ></TextField>
               </Grid>
@@ -150,7 +150,7 @@ const PerfilUsuario = (props) => {
                   value={usuario.email}
                   margin="normal"
                   onChange={ingresarValoresMemoria}
-                  label="Ingrese su Email"
+                  label="Email"
                   variant="outlined"
                 ></TextField>
               </Grid>
@@ -161,7 +161,7 @@ const PerfilUsuario = (props) => {
                   margin="normal"
                   value={usuario.username}
                   onChange={ingresarValoresMemoria}
-                  label="Ingrese su Username"
+                  label="Username"
                   variant="outlined"
                 ></TextField>
               </Grid>
@@ -175,7 +175,7 @@ const PerfilUsuario = (props) => {
                   margin="normal"
                   variant="outlined"
                   fullWidth
-                  label="Ingrese password"
+                  label="Password"
                 />
               </Grid>
             </Grid>
