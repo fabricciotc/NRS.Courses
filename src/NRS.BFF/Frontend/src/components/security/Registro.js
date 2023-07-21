@@ -40,6 +40,7 @@ const Registro = (props) => {
     registrarUsuario(usuario, dispatch).then((response) => {
       if (response.status === 200) {
         window.localStorage.setItem("tokenSeguridad", response.data.token);
+        props.history.push("/auth/perfil");
       } else if (response.status === 401) {
         dispatch({
           type: "OPEN_SNACKBAR",

@@ -13,6 +13,7 @@ import { obtenerUsuarioActual } from "./actions/UsuarioAction";
 import Alert from "@material-ui/lab/Alert";
 import ProtectedRoute from "./components/navegacion/bar/ProtectedRoute";
 import style from "./components/tools/Style";
+import NotFound from "./components/Error/NotFound";
 
 const App = () => {
   const [{ sesionUsuario, openSnackBar }, dispatch] = useStateValue();
@@ -78,6 +79,7 @@ const App = () => {
                   component={PerfilUsuario}
                 />
                 <ProtectedRoute exact path="/" component={PerfilUsuario} />
+                <Route path="*" component={NotFound} />
               </Switch>
             </Container>
           </Grid>
