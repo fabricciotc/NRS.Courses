@@ -132,7 +132,7 @@ namespace NRS.BFF
 
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "Frontend";
+                spa.Options.SourcePath = "build";
 
                 if (env.IsDevelopment())
                 {
