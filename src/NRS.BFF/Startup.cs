@@ -117,23 +117,19 @@ namespace NRS.BFF
         {
             app.UseCors("corsApp");
             app.UseMiddleware<ManejadorErrorMiddleware>();
-            //DE MOMENTO LO COMENTO PARA NO USAR HTTPS EN DESARROLLO
             app.UseHttpsRedirection();
             app.UseAuthentication();
-            app.UseDefaultFiles();
-            //app.UseSpaStaticFiles();
+            app.UseSpaStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-            app.UseStaticFiles();
 
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "Frontend";
-
                 if (env.IsDevelopment())
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");
