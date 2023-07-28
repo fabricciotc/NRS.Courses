@@ -16,6 +16,7 @@ RUN dotnet publish NRS.BFF/NRS.BFF.csproj -c Release -o /src/publish
 # Stage 3: Create the final runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
 WORKDIR /src
+RUN mkdir /src/Frontend
 COPY --from=dotnet-build /src/publish .
 COPY --from=frontend-build /src/NRS.BFF/Build ./Frontend 
 EXPOSE 80

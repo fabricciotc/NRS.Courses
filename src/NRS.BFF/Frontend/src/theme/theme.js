@@ -8,6 +8,12 @@ const theme = createMuiTheme({
       dark: "#05be50",
       contrastText: "#ECFAD8",
     },
+    danger: {
+      light: "red",
+      main: "red",
+      dark: "red",
+      contrastText: "red",
+    },
   },
 });
 export default theme;

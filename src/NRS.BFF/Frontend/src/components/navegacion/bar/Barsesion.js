@@ -5,7 +5,6 @@ import {
   IconButton,
   makeStyles,
   Toolbar,
-  Typography,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useStateValue } from "../../../context/storage";
@@ -139,7 +138,12 @@ const Barsesion = (props) => {
           {sesionUsuario ? (
             sesionUsuario.autenticado ? (
               <>
-                <Button color="inherit" onClick={salirSesionApp}>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  disableElevation
+                  onClick={salirSesionApp}
+                >
                   Salir
                 </Button>
 

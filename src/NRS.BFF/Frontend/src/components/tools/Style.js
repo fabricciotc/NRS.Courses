@@ -10,6 +10,13 @@ const style = {
     flexDirection: "column",
     alignItems: "center",
   },
+  notFoundContainer: {
+    marginTop: 8,
+    display: "flex",
+    gap: 10,
+    textAlign: "center",
+    flexDirection: "column",
+  },
   form: {
     width: "100%",
     marginTop: 20,
@@ -25,9 +32,25 @@ const style = {
     borderRadius: "10%",
     margin: "auto",
   },
+  avatarRight: {
+    margin: 5,
+    backgroundColor: "#1976D2",
+    borderRadius: "10%",
+    margin: "auto",
+    marginRight: "15px",
+  },
+  menuItem: {
+    display: "flex",
+    gap: 10,
+  },
   loginIcon: {
     margin: 5,
     width: "100%",
+  },
+  notFoundIcon: {
+    margin: 10,
+    width: "100%",
+    height: "400px",
   },
   registroIcon: {
     margin: 5,

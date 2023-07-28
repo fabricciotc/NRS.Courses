@@ -1,11 +1,23 @@
-import { Divider, List, ListItem, ListItemText } from "@material-ui/core";
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  styled,
+} from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
+import style from "../../tools/Style";
 
 export const MenuIzquierda = ({ classes }) => (
   <div className={classes.list}>
     <List>
-      <ListItem component={Link} button to="/auth/perfil">
+      <ListItem
+        component={Link}
+        style={style.menuItem}
+        button
+        to="/auth/perfil"
+      >
         <i className="material-icons">account_box</i>
         <ListItemText
           classes={{ primary: classes.ListItemText }}
@@ -15,14 +27,24 @@ export const MenuIzquierda = ({ classes }) => (
     </List>
     <Divider></Divider>
     <List>
-      <ListItem component={Link} button to="/curso/nuevo">
+      <ListItem
+        component={Link}
+        button
+        to="/curso/nuevo"
+        style={style.menuItem}
+      >
         <i className="material-icons">add_box</i>
         <ListItemText
           classes={{ primary: classes.ListItemText }}
           primary="Nuevo Curso"
         ></ListItemText>
       </ListItem>
-      <ListItem component={Link} button to="/curso/lista">
+      <ListItem
+        style={style.menuItem}
+        component={Link}
+        button
+        to="/curso/lista"
+      >
         <i className="material-icons">menu_book</i>
         <ListItemText
           classes={{ primary: classes.ListItemText }}
@@ -32,14 +54,24 @@ export const MenuIzquierda = ({ classes }) => (
     </List>
     <Divider></Divider>
     <List>
-      <ListItem component={Link} button to="/instructor/nuevo">
+      <ListItem
+        style={style.menuItem}
+        component={Link}
+        button
+        to="/instructor/nuevo"
+      >
         <i className="material-icons">person_add</i>
         <ListItemText
           classes={{ primary: classes.ListItemText }}
           primary="Nuevo Instructor"
         ></ListItemText>
       </ListItem>
-      <ListItem component={Link} button to="/instructor/lista">
+      <ListItem
+        style={style.menuItem}
+        component={Link}
+        button
+        to="/instructor/lista"
+      >
         <i className="material-icons">people</i>
         <ListItemText
           classes={{ primary: classes.ListItemText }}

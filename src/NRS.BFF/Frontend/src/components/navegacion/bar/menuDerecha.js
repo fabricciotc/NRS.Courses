@@ -1,7 +1,14 @@
-import { List, ListItem, Avatar, ListItemText } from "@material-ui/core";
+import {
+  List,
+  ListItem,
+  Avatar,
+  ListItemText,
+  Button,
+} from "@material-ui/core";
 import React from "react";
 import FotoUsuarioTheme from "../../../logo.svg";
 import { Link } from "react-router-dom";
+import style from "../../tools/Style";
 
 export const MenuDerecha = ({
   classes,
@@ -16,6 +23,7 @@ export const MenuDerecha = ({
         <>
           <ListItem button component={Link}>
             <Avatar
+              style={style.avatarRight}
               src={usuario ? usuario.fotoUrl || FotoUsuarioTheme : null}
             />
             <ListItemText
@@ -24,12 +32,15 @@ export const MenuDerecha = ({
             ></ListItemText>
           </ListItem>
           <ListItem button component={Link}>
-            <ListItemText button onClick={salirSesion}>
-              <ListItemText
-                classes={{ primary: classes.listItemText }}
-                primary="Salir"
-              ></ListItemText>
-            </ListItemText>
+            <Button
+              color="secondary"
+              variant="contained"
+              disableElevation
+              onClick={salirSesion}
+              style={{ width: "100%" }}
+            >
+              Salir
+            </Button>
           </ListItem>
         </>
       ) : (
