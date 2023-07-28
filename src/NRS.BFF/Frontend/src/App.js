@@ -14,6 +14,7 @@ import Alert from "@material-ui/lab/Alert";
 import ProtectedRoute from "./components/navegacion/bar/ProtectedRoute";
 import style from "./components/tools/Style";
 import NotFound from "./components/Error/NotFound";
+import NuevoCurso from "./components/cursos/NuevoCurso";
 
 const App = () => {
   const [{ sesionUsuario, openSnackBar }, dispatch] = useStateValue();
@@ -77,6 +78,11 @@ const App = () => {
                   exact
                   path="/auth/perfil"
                   component={PerfilUsuario}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/curso/nuevo"
+                  component={NuevoCurso}
                 />
                 <ProtectedRoute exact path="/" component={PerfilUsuario} />
                 <Route path="*" component={NotFound} />

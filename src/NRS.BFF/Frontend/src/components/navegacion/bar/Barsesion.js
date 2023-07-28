@@ -138,17 +138,23 @@ const Barsesion = (props) => {
           {sesionUsuario ? (
             sesionUsuario.autenticado ? (
               <>
+                <Avatar src={usuario.fotoUrl || FotoUsuarioTheme}></Avatar>
+                <Button
+                  color="inherit"
+                  onClick={() => {
+                    props.history.push("/auth/perfil");
+                  }}
+                >
+                  {usuario.nombreCompleto}
+                </Button>
                 <Button
                   color="secondary"
-                  variant="contained"
+                  variant="outlined"
                   disableElevation
                   onClick={salirSesionApp}
                 >
                   Salir
                 </Button>
-
-                <Button color="inherit">{usuario.nombreCompleto}</Button>
-                <Avatar src={usuario.fotoUrl || FotoUsuarioTheme}></Avatar>
               </>
             ) : (
               <>
