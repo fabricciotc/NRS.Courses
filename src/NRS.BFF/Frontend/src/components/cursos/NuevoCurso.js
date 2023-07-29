@@ -15,6 +15,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import ImageUploader from "react-images-upload";
 import { v4 as uuidv4 } from "uuid";
 import { obtenerDataImagen } from "../../actions/ImagenAction";
+import { guardarCurso } from "../../actions/CursoAction";
 
 const NuevoCurso = () => {
   const [imagenCurso, setImagenCurso] = useState(null);
@@ -26,12 +27,36 @@ const NuevoCurso = () => {
     precioPromocion: 0.0,
   });
 
+  const guardarCursoBoton = (e) => {
+    e.preventDefault();
+    const cursoId = uuidv4();
+    const objetoCurso = {
+      cursoId: cursoId,
+      titulo: curso.titulo,
+      descripcion: curso.descripcion,
+      precio: parseFloat(curso.precio || 0.0),
+      promocion: parseFloat(curso.precioPromocion || 0.0),
+      fechaPublicacion: fechaSeleccionada,
+    };
+    const objetoImagen = {
+      nombre: imagenCurso.nombre,
+      data: imagenCurso.data,
+      extension: imagenCurso.extension,
+      objetoReferencia: cursoId,
+    };
+
+    guardarCurso(objetoCurso, objetoImagen).then((respuestas) => {
+      console.log("respuestas arreglo", respuestas);
+    });
+  };
+
   const subirFoto = (imagenes) => {
     const foto = imagenes[0];
     obtenerDataImagen(foto).then((respuesta) => {
       setImagenCurso(respuesta);
     });
   };
+
   const ingresarValoresMemoria = (e) => {
     const { name, value } = e.target;
     setCurso((anterior) => ({
@@ -125,6 +150,7 @@ const NuevoCurso = () => {
                 color="primary"
                 size="large"
                 style={style.submit}
+                onClick={guardarCursoBoton}
               >
                 Guardar Curso
               </Button>
