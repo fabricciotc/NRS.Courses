@@ -12,8 +12,12 @@ import {
   MuiPickersUtilsProvider,
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
+import ImageUploader from "react-images-upload";
+import { v4 as uuidv4 } from "uuid";
+import { obtenerDataImagen } from "../../actions/ImagenAction";
 
 const NuevoCurso = () => {
+  const [imagenCurso, setImagenCurso] = useState(null);
   const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
   const [curso, setCurso] = useState({
     titulo: "",
@@ -22,6 +26,12 @@ const NuevoCurso = () => {
     precioPromocion: 0.0,
   });
 
+  const subirFoto = (imagenes) => {
+    const foto = imagenes[0];
+    obtenerDataImagen(foto).then((respuesta) => {
+      setImagenCurso(respuesta);
+    });
+  };
   const ingresarValoresMemoria = (e) => {
     const { name, value } = e.target;
     setCurso((anterior) => ({
@@ -29,6 +39,7 @@ const NuevoCurso = () => {
       [name]: value,
     }));
   };
+  const fotoKey = uuidv4();
   return (
     <Container component="main" maxWidth="md" justify="center">
       <div style={style.paper}>
@@ -77,7 +88,7 @@ const NuevoCurso = () => {
                 onChange={ingresarValoresMemoria}
               />
             </Grid>
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={6}>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
                   value={fechaSeleccionada}
@@ -92,6 +103,17 @@ const NuevoCurso = () => {
                   }}
                 ></KeyboardDatePicker>
               </MuiPickersUtilsProvider>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <ImageUploader
+                withIcon={false}
+                key={fotoKey}
+                singleImage={true}
+                buttonText="Seleccionar Imagen del Curso"
+                onChange={subirFoto}
+                imgExtension={[".jpg", ".jpeg", ".png", ".gif"]}
+                maxFileSize={5242880}
+              ></ImageUploader>
             </Grid>
           </Grid>
           <Grid container justify="center">
