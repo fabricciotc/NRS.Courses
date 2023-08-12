@@ -4,7 +4,11 @@ This file will help to deploy a SPA application with a .NET backend in a single 
 
 It will also run the build for our react.js application and the release for the .NET web API to run both in the same port so we will only need to focus on coding because the docker file will orchestrate our buildings and deployments.
 
-![image.png](/.eraser/2niTCkegLT8Yjys2HE6I___dvlFjxUsuWQuCc2pfQqoN9ZiOEC2___DTXo-4WgX9_P42yuhkOxL.png "image.png")
+
+
+![diagram-export-12_8_2023, 10_42_44.png](/.eraser/2niTCkegLT8Yjys2HE6I___dvlFjxUsuWQuCc2pfQqoN9ZiOEC2___iBdXfq-KBggUrMwtSNLil.png "diagram-export-12_8_2023, 10_42_44.png")
+
+
 
 
 
