@@ -2,10 +2,12 @@ import HttpCliente from "../services/HttpCliente";
 
 export const guardarCurso = async (curso, imagen) => {
   const endPointCurso = "/cursos";
-  const endPointImagen = "/documento";
   const promiseCurso = HttpCliente.post(endPointCurso, curso);
-  const promiseImagen = HttpCliente.post(endPointImagen, imagen);
-
-  const responseArray = await Promise.all([promiseCurso, promiseImagen]);
-  return responseArray;
+  if (imagen) {
+    const endPointImagen = "/documento";
+    const promiseImagen = HttpCliente.post(endPointImagen, imagen);
+    return await Promise.all([promiseCurso, promiseImagen]);
+  } else {
+    return await Promise.all(promiseCurso);
+  }
 };

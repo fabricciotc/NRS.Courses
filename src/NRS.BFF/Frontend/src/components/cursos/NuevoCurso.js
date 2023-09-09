@@ -16,8 +16,10 @@ import ImageUploader from "react-images-upload";
 import { v4 as uuidv4 } from "uuid";
 import { obtenerDataImagen } from "../../actions/ImagenAction";
 import { guardarCurso } from "../../actions/CursoAction";
+import { useStateValue } from "../../context/storage";
 
 const NuevoCurso = () => {
+  const [sesionUsuario, dispatch] = useStateValue();
   const [imagenCurso, setImagenCurso] = useState(null);
   const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
   const [curso, setCurso] = useState({
@@ -38,15 +40,43 @@ const NuevoCurso = () => {
       promocion: parseFloat(curso.precioPromocion || 0.0),
       fechaPublicacion: fechaSeleccionada,
     };
-    const objetoImagen = {
-      nombre: imagenCurso.nombre,
-      data: imagenCurso.data,
-      extension: imagenCurso.extension,
-      objetoReferencia: cursoId,
-    };
+
+    let objetoImagen = null;
+
+    if (imagenCurso) {
+      objetoImagen = {
+        nombre: imagenCurso.nombre,
+        data: imagenCurso.data,
+        extension: imagenCurso.extension,
+        objetoReferencia: cursoId,
+      };
+    }
 
     guardarCurso(objetoCurso, objetoImagen).then((respuestas) => {
-      console.log("respuestas arreglo", respuestas);
+      const responseCurso = respuestas[0];
+      const responseImagen = respuestas[1];
+      let mensaje = "";
+
+      if (responseCurso.status === 200) {
+        mensaje += "Se guardo exitosamente el curso";
+      } else {
+        mensaje += "Errores: " + Object.keys(responseCurso.data.errors);
+      }
+      if (responseImagen) {
+        if (responseImagen.status === 200) {
+          mensaje += ", Se guardo la imagen correctamente";
+        } else {
+          mensaje +=
+            ", Errores en imagen: " + Object.keys(responseImagen.data.errors);
+        }
+      }
+      dispatch({
+        type: "OPEN_SNACKBAR",
+        openMensaje: {
+          open: true,
+          mensaje: mensaje,
+        },
+      });
     });
   };
 
