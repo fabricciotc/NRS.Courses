@@ -4,5 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "dotnet run --project .\\src\\NRS.BFF\\"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.3.3"
   }
 }

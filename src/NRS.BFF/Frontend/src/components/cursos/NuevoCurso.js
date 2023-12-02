@@ -29,6 +29,17 @@ const NuevoCurso = () => {
     precioPromocion: 0.0,
   });
 
+  const resetearForm = () => {
+    setFechaSeleccionada(new Date());
+    setImagenCurso(null);
+    setCurso({
+      titulo: "",
+      descripcion: "",
+      precio: 0.0,
+      precioPromocion: 0.0,
+    });
+  };
+
   const guardarCursoBoton = (e) => {
     e.preventDefault();
     const cursoId = uuidv4();
@@ -59,6 +70,7 @@ const NuevoCurso = () => {
 
       if (responseCurso.status === 200) {
         mensaje += "Se guardo exitosamente el curso";
+        resetearForm();
       } else {
         mensaje += "Errores: " + Object.keys(responseCurso.data.errors);
       }
