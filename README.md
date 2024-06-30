@@ -1,7 +1,72 @@
-This file will help to deploy a SPA application with a .NET backend in a single PaaS subscription in any platform (Digital Ocean, Google Cloud, Azure, AWS) using a docker file. This will help us deploy both Frontend (React.JS) and Backend (.NET) in a single artifact with a docker file.
+# NRS.Courses Deployment Guide
 
-It will also run the build for our react.js application and the release for the .NET web API to run both in the same port so we will only need to focus on coding because the docker file will orchestrate our buildings and deployments.
+Welcome to the NRS.Courses repository! 🎉 This guide will help you deploy the application using Docker and .NET.
 
-![Figure 1](/.eraser/2niTCkegLT8Yjys2HE6I___dvlFjxUsuWQuCc2pfQqoN9ZiOEC2___---figure---L9og86hUgkIcs6pI2oPde---figure---e6SG2OtiGI6VBHrNIo5dcA.png "Figure 1")
+## Prerequisites 🛠️
 
-<!--- Eraser file: https://app.eraser.io/workspace/2niTCkegLT8Yjys2HE6I --->
+- [.NET SDK](https://dotnet.microsoft.com/download) installed
+- [Docker](https://www.docker.com/products/docker-desktop) installed
+
+## Deployment Instructions 🚀
+
+### Deploying with Docker 🐳
+
+1. **Clone the Repository** 📂
+    ```bash
+    git clone https://github.com/fabricciotc/NRS.Courses.git
+    cd NRS.Courses
+    ```
+
+2. **Build the Docker Image** 🏗️
+    ```bash
+    docker build -t nrs.courses .
+    ```
+
+3. **Run the Docker Container** ▶️
+    ```bash
+    docker run -d -p 8080:80 nrs.courses
+    ```
+
+4. **Access the Application** 🌐
+    Open your browser and navigate to `http://localhost:8080`
+
+### Deploying with .NET 🖥️
+
+1. **Clone the Repository** 📂
+    ```bash
+    git clone https://github.com/fabricciotc/NRS.Courses.git
+    cd NRS.Courses
+    ```
+
+2. **Restore Dependencies** 📦
+    ```bash
+    dotnet restore
+    ```
+
+3. **Build the Application** 🏗️
+    ```bash
+    dotnet build
+    ```
+
+4. **Run the Application** ▶️
+    ```bash
+    dotnet run
+    ```
+
+5. **Access the Application** 🌐
+    Open your browser and navigate to `http://localhost:5000`
+
+## GitHub Plugins and Features 🎨
+
+- **Issues**: Track your work and report bugs [here](https://github.com/fabricciotc/NRS.Courses/issues).
+- **Pull Requests**: Contribute by creating a pull request [here](https://github.com/fabricciotc/NRS.Courses/pulls).
+- **Projects**: Organize your tasks with GitHub Projects [here](https://github.com/fabricciotc/NRS.Courses/projects).
+
+Feel free to explore the code and contribute! If you encounter any issues, please open an issue or a pull request.
+
+Happy coding! 💻✨
+
+---
+🔗 **Useful Links**
+- [Official Documentation](https://docs.microsoft.com/en-us/dotnet/)
+- [Docker Documentation](https://docs.docker.com/)
